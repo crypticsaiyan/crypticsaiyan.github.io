@@ -7,6 +7,17 @@
   font-family: "JetBrains Mono";
 }
 
+.noise {
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  object-fit: cover;
+  pointer-events: none;
+  height: 100vh;
+  object-fit: contain;
+  opacity: 0.5;
+}
+
 header {
   height: 27vh;
   background-color: var(--violet);
@@ -31,24 +42,36 @@ header .cv {
   text-align: center;
 }
 
-header .cv a{
-    color: var(--rosewater);
-    text-decoration: none;
-    font-size: 26px;
-    font-weight: 800;
+header .cv a {
+  color: var(--rosewater);
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: 800;
 }
 
-header .cv a span:hover{
-    text-decoration: underline;
-    text-decoration-style: dashed;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 10px;
+header .cv a span:hover {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 10px;
 }
 
 main {
   height: 70vh;
   background-color: var(--violet);
+  display: flex;
 }
+
+.left {
+  border: 2px solid green;
+  width: 40%;
+}
+
+.right {
+  border: 2px solid yellow;
+  width: 60%;
+}
+
 footer {
   height: 3vh;
   width: 100vw;
