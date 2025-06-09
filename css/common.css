@@ -1,3 +1,31 @@
-.hidden{
-    display: none;
+.hidden {
+  display: none;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.red {
+  color: var(--red);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+.rosewater {
+  color: var(--rosewater);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.white{
+  color: var(--white);
 }

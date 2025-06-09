@@ -5,7 +5,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "JetBrains Mono";
-  font-weight: 500;
 }
 
 .noise {
@@ -16,7 +15,7 @@
   pointer-events: none;
   height: 100vh;
   object-fit: contain;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 header {
@@ -68,31 +67,38 @@ main {
   width: 45%;
   display: flex;
   align-items: center;
+  list-style: none;
   justify-content: center;
+  /* border: 2px solid red; */
+  font-weight: 600;
 }
 
 nav ul {
   display: flex;
-  list-style: none;
   flex-direction: column;
-  /* border: 2px solid red; */
   border-right: 2px solid var(--lavender);
-  border-left: 2px solid var(--lavender);
   padding: 10px;
   gap: 10px;
+  border-left: 2px solid var(--lavender);
+  transition: all 0.2s ease-in;
 }
 
 nav ul li {
   width: 25vw;
   /* border: 2px solid green; */
   font-size: var(--normal);
-  padding: 0 10px;
+  padding: 5px 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.2s ease-in;
 }
 
+nav {
+  display: flex;
+  color: var(--white);
+  font-size: var(--normal);
+  gap: 30px;
+}
 nav ul li i {
   font-size: 26px;
 }
@@ -120,10 +126,51 @@ nav ul li i {
 .right {
   /* border: 2px solid yellow; */
   width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal {
+  width: 80%;
+  min-height: 65%;
+  border: 2px solid var(--lavender);
+  background-color: var(--dark-violet);
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.prompt {
+  height: 20%;
+  /* border: 2px solid green; */
+  font-size: var(--normal);
+  line-height: 27px;
+  align-content: center;
+}
+
+.prompt .text{
+    /* border: 2px solid grey; */
+    align-content: center;
+    margin-left: 40px;
+}
+
+.content {
+  /* border: 2px solid red; */
+  height: 80%;
+  color: var(--rosewater);
+  font-weight: 500;
+  font-size: var(--normal);
+  padding: 0 60px;
 }
 
 footer {
   height: 3vh;
   width: 100vw;
   background-color: var(--dark-violet);
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--normal);
+  font-weight: 600;
+  padding: 0 20px;
 }
