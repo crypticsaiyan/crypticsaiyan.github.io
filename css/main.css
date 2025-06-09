@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import "https://www.nerdfonts.com/assets/css/webfont.css";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "JetBrains Mono";
+}
+
+header {
+  height: 27vh;
+  background-color: var(--violet);
+  /* border: 2px solid red; */
+  display: flex;
+  position: relative;
+}
+.hey {
+  position: relative;
+  width: 80vw;
+  /* border: 2px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+header .hey img {
+  position: absolute;
+  margin-left: 100px;
+}
+header .cv {
+  margin: auto;
+  text-align: center;
+}
+
+header .cv a{
+    color: var(--rosewater);
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+header .cv a span:hover{
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-thickness: 3px;
+    text-underline-offset: 10px;
+}
+
+main {
+  height: 70vh;
+  background-color: var(--violet);
+}
+footer {
+  height: 3vh;
+  width: 100vw;
+  background-color: var(--dark-violet);
+}
