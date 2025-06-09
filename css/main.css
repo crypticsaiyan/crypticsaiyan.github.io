@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "JetBrains Mono";
+  font-weight: 500;
 }
 
 .noise {
@@ -30,7 +31,7 @@ header {
   width: 80vw;
   /* border: 2px solid red; */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: flex-start;
 }
 header .hey img {
@@ -63,13 +64,62 @@ main {
 }
 
 .left {
-  border: 2px solid green;
-  width: 40%;
+  /* border: 2px solid green; */
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  border-right: 2px solid var(--lavender);
+  border-left: 2px solid var(--lavender);
+  padding: 10px;
+  gap: 10px;
+}
+
+nav ul li {
+  width: 25vw;
+  /* border: 2px solid green; */
+  font-size: var(--normal);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease-in;
+}
+
+nav ul li i {
+  font-size: 26px;
+}
+
+.file {
+  color: var(--blue);
+}
+
+.file:hover {
+  color: var(--violet);
+  background-color: var(--blue);
+  cursor: pointer;
+}
+
+.directory {
+  color: var(--mauve);
+}
+
+.directory:hover {
+  color: var(--violet);
+  background-color: var(--mauve);
+  cursor: pointer;
 }
 
 .right {
-  border: 2px solid yellow;
-  width: 60%;
+  /* border: 2px solid yellow; */
+  width: 55%;
 }
 
 footer {
