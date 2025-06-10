@@ -37,6 +37,11 @@ function updateFooter(element) {
     filename.innerText = items[itemIndex].id;
     // changeNoise("mauve")
   }
+  permissions.innerHTML = colorise(x);
+}
+
+//colorise
+function colorise(x) {
   const colorMap = {
     r: "yellow",
     w: "red",
@@ -44,7 +49,7 @@ function updateFooter(element) {
     d: "orange",
   };
 
-  permissions.innerHTML = x.replace(
+  return x.replace(
     /([drwx])/g,
     (match) => `<span class="${colorMap[match]}">${match}</span>`
   );
@@ -88,10 +93,10 @@ document.querySelector("ul").addEventListener("click", (event) => {
 const mappings = {
   about_me: ["cat", "about_me.txt"],
   skills: ["displaysills", ""],
-  "hobbies/" : ["ls", "hobbies"],
-  "projects/" : ["", ""],
-  "get_in_touch": ["eza", ""],
-  credits: ["cowsaycredits", ""]
+  "hobbies/": ["ls", "hobbies"],
+  "projects/": ["", ""],
+  get_in_touch: ["eza", ""],
+  credits: ["cowsaycredits", ""],
 };
 
 // function to update terminal
@@ -160,5 +165,58 @@ function updateTerminal(id) {
               </div>
             </div>
     `;
+  } else if (id == "hobbies/") {
+    const hobcol = {
+      very_often: "blue",
+      often: "mauve",
+      rarely: "red",
+    };
+    const colperm = colorise("-rwxr--r--");
+    function hobb(status, name, cl) {
+      let x = document.createElement("div");
+      x.classList.add("habbititem");
+      if (cl) {
+        x.innerHTML = `
+                <div class="white">${colperm}</div>
+                <div class="${hobcol[status]}">${status}</div>
+                <div class="link"><a href="${cl}">${name}</a></div>
+        `;
+      } else
+        x.innerHTML = `
+                <div class="white">${colperm}</div>
+                <div class="${hobcol[status]}">${status}</div>
+                <div>${name}</div>
+      `;
+      return x;
+    }
+    const hobblist = {
+      coding: "very_often",
+      gaming: "often",
+      chess: "rarely",
+      sketching: "rarely",
+      music: "very_often",
+      typing: "very_often",
+      competitive_prog: "often",
+    };
+    let y = document.createElement("div");
+    y.className = "habbits";
+    const link = {
+      coding: "https://www.github.com/crypticsaiyan",
+      chess: "https://www.chess.com/member/organicaction",
+      typing: "https://monkeytype.com/profile/CryptoSaiyan",
+      competitive_prog: "https://codeforces.com/profile/CryptoSaiyan",
+    };
+    for (i in hobblist) {
+      if (
+        i == "coding" ||
+        i == "chess" ||
+        i == "typing" ||
+        i == "competitive_prog"
+      ) {
+        y.append(hobb(hobblist[i], i, (cl = link[i])));
+      } else y.append(hobb(hobblist[i], i));
+    }
+    terminal.lastElementChild.replaceChildren(y);
   }
 }
+updateTerminal("about_me");

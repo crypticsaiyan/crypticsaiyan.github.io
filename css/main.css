@@ -203,7 +203,7 @@ nav ul li i {
 
 .terminal {
   width: 80%;
-  min-height: 65%;
+  min-height: 70%;
   border: 2px solid var(--lavender);
   background-color: var(--dark-violet);
   display: flex;
@@ -216,7 +216,7 @@ nav ul li i {
   height: 20%;
   /* border: 2px solid green; */
   font-size: var(--normal);
-  line-height: 27px;
+  line-height: 30px;
   align-content: center;
 }
 
@@ -235,6 +235,31 @@ nav ul li i {
   padding: 0 60px;
 }
 
+.content .habbits {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.content .habbits .habbititem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.content .habbits .habbititem div {
+  text-align: left;
+  width: 33%;
+}
+
+.content .habbits .habbititem a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.content .habbits .habbititem a:hover {
+  color: var(--teal);
+}
+
 .content .skills {
   display: flex;
   flex-direction: column;
@@ -245,7 +270,7 @@ nav ul li i {
 .tools {
   display: flex;
   flex-wrap: wrap;
-  gap: 0 20px;
+  gap: 0 10px;
 }
 
 .lang div,
