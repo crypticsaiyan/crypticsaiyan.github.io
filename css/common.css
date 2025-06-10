@@ -26,6 +26,10 @@
   color: var(--yellow);
 }
 
-.white{
+.white {
   color: var(--white);
+}
+
+.hover:hover {
+  cursor: pointer;
 }
