@@ -1,3 +1,4 @@
 - [x] Add grain
 - [ ] Add Cursor
 - [ ] Pixel Icons
+- [ ] Add Gradient to terminal border

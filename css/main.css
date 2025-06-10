@@ -3,6 +3,8 @@
 
 :root {
   --noise-url: url("/assets/images/rainbow.png");
+  --normal: 24px;
+  --small: 18px;
 }
 
 * {
@@ -179,7 +181,7 @@ nav ul li i {
 
 .file:hover,
 .file.active {
-  color: var(--violet);
+  color: var(--dark-violet);
   background-color: var(--blue);
 }
 
@@ -189,7 +191,7 @@ nav ul li i {
 
 .directory:hover,
 .directory.active {
-  color: var(--violet);
+  color: var(--dark-violet);
   background-color: var(--mauve);
 }
 
@@ -203,17 +205,17 @@ nav ul li i {
 
 .terminal {
   width: 80%;
-  min-height: 70%;
-  border: 2px solid var(--lavender);
-  background-color: var(--dark-violet);
+  min-height: 75%;
+  border: 3px solid var(--lavender);
+  background-color: var(--darkest);
   display: flex;
   flex-direction: column;
   padding: 40px;
+  padding-bottom: 0px;
   gap: 30px;
 }
 
 .prompt {
-  height: 20%;
   /* border: 2px solid green; */
   font-size: var(--normal);
   line-height: 30px;
@@ -228,7 +230,6 @@ nav ul li i {
 
 .content {
   /* border: 2px solid red; */
-  height: 80%;
   color: var(--rosewater);
   font-weight: 500;
   font-size: var(--normal);
@@ -296,10 +297,62 @@ nav ul li i {
   text-align: center;
 }
 
+.project {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.content .project .group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .project .group div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.content .project .group .projectimage {
+  border: 2px solid var(--mauve);
+  width: 500px; /* Set your desired width */
+  height: 300px; /* Set your desired height */
+}
+
+.projectimage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.leftarr,
+.rightarr {
+  margin: 40px;
+  font-size: 40px;
+}
+
+.content .project .projectname {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .project .projectname a {
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.project .projectname div {
+  font-size: var(--small);
+}
+
 footer {
   height: 3vh;
   width: 100vw;
-  background-color: var(--dark-violet);
+  background-color: var(--darkest);
   display: flex;
   justify-content: space-between;
   align-items: center;

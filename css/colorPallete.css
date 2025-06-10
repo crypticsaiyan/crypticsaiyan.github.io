@@ -4,6 +4,7 @@
   --lavender: #b4befe;
   --violet: #1e1e2e;
   --dark-violet: #181825;
+  --darkest: #11111b;
   --yellow: #f9e2af;
   --green: #a6e3a1;
   --red: #f38ba8;
@@ -12,5 +13,7 @@
   --rosewater: #f5e0dc;
   --orange: #fab387;
   --teal: #94e2d5;
-  --normal: 24px;
+  --maroon: #eba0ac;
+  --sapphire: #74c7ec;
+  --sky: #89dceb;
 }

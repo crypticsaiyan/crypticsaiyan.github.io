@@ -92,17 +92,33 @@ document.querySelector("ul").addEventListener("click", (event) => {
 
 const mappings = {
   about_me: ["cat", "about_me.txt"],
-  skills: ["displaysills", ""],
+  skills: ["displayskills", ""],
   "hobbies/": ["ls", "hobbies"],
-  "projects/": ["", ""],
   get_in_touch: ["eza", ""],
   credits: ["cowsaycredits", ""],
 };
 
 // function to update terminal
+
+const projects = {
+  mindmeld: [
+    "MindMeld",
+    "/assets/images/mindmeld.png",
+    "https://crypticsaiyan.github.io/Performance-Tracker/",
+    "Test your cognitive skills through fun games!",
+  ],
+  spyware: [
+    "SpyWare",
+    "/assets/images/malware.png",
+    "https://github.com/crypticsaiyan/wocProject",
+    "A spyware which uses python sockets for connections.",
+  ],
+};
+
 let terminal = document.querySelector(".terminal");
 function updateTerminal(id) {
-  terminal.firstElementChild.innerHTML = `
+  if (id != "projects/") {
+    terminal.firstElementChild.innerHTML = `
               <div class="text">
               <span class="bold red">╭─cryptosaiyan</span>
               <span class="rosewater">in</span>
@@ -114,6 +130,11 @@ function updateTerminal(id) {
               <span class="rosewater">${mappings[id][1]}</span>
             </div>
   `;
+  } else {
+    terminal.firstElementChild.innerHTML = `
+    <div class="mauve bold" style="text-align: center;">Projects</div>
+    `;
+  }
   if (id == "about_me") {
     terminal.lastElementChild.innerHTML = `
                 Hi! I'm an undergraduate student in Computer Science at IIT Dhanbad.
@@ -179,7 +200,7 @@ function updateTerminal(id) {
         x.innerHTML = `
                 <div class="white">${colperm}</div>
                 <div class="${hobcol[status]}">${status}</div>
-                <div class="link"><a href="${cl}">${name}</a></div>
+                <div class="link"><a href="${cl}" target="_blank">${name}</a></div>
         `;
       } else
         x.innerHTML = `
@@ -217,6 +238,31 @@ function updateTerminal(id) {
       } else y.append(hobb(hobblist[i], i));
     }
     terminal.lastElementChild.replaceChildren(y);
+  } else if (id == "projects/") {
+    function changeProject(projectname) {
+      terminal.lastElementChild.innerHTML = `
+            <div class="project">
+              <div class="group">
+                <div class="bold leftarr">&lt;</div>
+                <div class="projectimage">
+                  <img
+                    src="${projects[projectname][1]}"
+                    width="500px"
+                    alt="${projects[projectname][0]}"
+                  />
+                </div>
+                <div class="bold rightarr">&gt;</div>
+              </div>
+              <div class="projectname">
+                <a href="${projects[projectname][2]}"
+                  target="_blank">${projects[projectname][0]}</a
+                >
+                <div>${projects[projectname][3]}</div>
+              </div>
+            </div>
+    `;
+    }
+    changeProject("mindmeld");
   }
 }
 updateTerminal("about_me");

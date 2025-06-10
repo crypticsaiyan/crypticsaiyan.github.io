@@ -51,17 +51,17 @@
 }
 
 .teal {
-  color: #94e2d5;
+  color: var(--teal);
 }
 
 .maroon {
-  color: #eba0ac;
+  color: var(--maroon);
 }
 
 .sapphire {
-  color: #74c7ec;
+  color: var(--sapphire);
 }
 
 .sky {
-  color: #89dceb;
+  color: var(--sky);
 }
