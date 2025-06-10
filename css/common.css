@@ -34,10 +34,34 @@
   cursor: pointer;
 }
 
-.green{
+.green {
   color: var(--green);
 }
 
-.orange{
-  color: var(--orange)
+.orange {
+  color: var(--orange);
+}
+
+.violet {
+  color: var(--violet);
+}
+
+.mauve {
+  color: var(--mauve);
+}
+
+.teal {
+  color: #94e2d5;
+}
+
+.maroon {
+  color: #eba0ac;
+}
+
+.sapphire {
+  color: #74c7ec;
+}
+
+.sky {
+  color: #89dceb;
 }

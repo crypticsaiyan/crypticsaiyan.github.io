@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap");
 @import "https://www.nerdfonts.com/assets/css/webfont.css";
 
 :root {
@@ -9,7 +9,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "JetBrains Mono";
+  font-family: "JetBrains Mono", monospace;
 }
 
 body {
@@ -233,6 +233,42 @@ nav ul li i {
   font-weight: 500;
   font-size: var(--normal);
   padding: 0 60px;
+}
+
+.content .skills {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.lang,
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 20px;
+}
+
+.lang div,
+.tools div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 2px solid red; */
+  height: 80px;
+  width: 90px;
+  gap: 10px;
+}
+
+.lang div i,
+.tools div i {
+  font-size: 40px;
+}
+
+.lang div span,
+.tools div span {
+  font-size: 20px;
+  text-align: center;
 }
 
 footer {
