@@ -33,3 +33,11 @@
 .hover:hover {
   cursor: pointer;
 }
+
+.green{
+  color: var(--green);
+}
+
+.orange{
+  color: var(--orange)
+}

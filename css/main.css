@@ -25,8 +25,8 @@ body::before {
   background-image: url("/assets/images/design.png");
   /* background-size: cover; */
   /* background-position: bottom; */
-  opacity: 0.3;         /* ✅ Image opacity only */
-  z-index: -1;          /* Behind everything */
+  opacity: 0.3; /* ✅ Image opacity only */
+  z-index: -1; /* Behind everything */
 }
 .noise {
   position: fixed;
@@ -36,7 +36,7 @@ body::before {
   pointer-events: none;
   height: 100vh;
   object-fit: contain;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
 header {
@@ -128,7 +128,8 @@ nav ul li i {
   color: var(--blue);
 }
 
-.file:hover, .file.active {
+.file:hover,
+.file.active {
   color: var(--violet);
   background-color: var(--blue);
 }
@@ -137,7 +138,8 @@ nav ul li i {
   color: var(--mauve);
 }
 
-.directory:hover , .directory.active{
+.directory:hover,
+.directory.active {
   color: var(--violet);
   background-color: var(--mauve);
 }
@@ -169,10 +171,10 @@ nav ul li i {
   align-content: center;
 }
 
-.prompt .text{
-    /* border: 2px solid grey; */
-    align-content: center;
-    margin-left: 40px;
+.prompt .text {
+  /* border: 2px solid grey; */
+  align-content: center;
+  margin-left: 40px;
 }
 
 .content {
@@ -194,4 +196,10 @@ footer {
   font-size: var(--normal);
   font-weight: 600;
   padding: 0 20px;
+}
+
+footer div>span {
+  display: inline-block;
+  min-width: 150px;
+  text-align: right;
 }
