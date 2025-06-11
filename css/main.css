@@ -96,9 +96,9 @@ header {
   display: flex;
   position: relative;
 }
-.hey {
+header .hey {
   position: relative;
-  width: 80vw;
+  width: 70vw;
   /* border: 2px solid red; */
   display: flex;
   align-items: flex-end;
@@ -108,24 +108,54 @@ header .hey img {
   position: absolute;
   margin-left: 100px;
 }
-header .cv {
-  margin: auto;
-  text-align: center;
-}
 
-header .cv a {
+header .instructions {
+  display: flex;
+  flex-direction: column;
   color: var(--rosewater);
-  text-decoration: none;
-  font-size: 26px;
-  font-weight: 800;
+  font-size: var(--normal);
+  align-items: center;
+  justify-content: center;
+  /* border: 2px solid red; */
+  margin-top: 100px;
+  width: 30vw;
 }
 
-header .cv a span:hover {
-  text-decoration: underline;
-  text-decoration-style: dashed;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 10px;
+header .instructions:hover{
+  cursor: pointer;
 }
+
+*[data-tooltip] {
+  position: relative;
+}
+*[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 25%;
+  right: 50%;
+  transform: translateX(-50%);
+  background-color: var(--darkest);
+  color: var(--white);
+  padding: 15px 10px;
+  border: 2px solid var(--mauve);
+  border-radius: 5px;
+  font-size: var(--small);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  width: 200px;      /* Set your desired width */
+  height: 60px;      /* Set your desired height */
+  display: flex;     /* Center content vertically and horizontally */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;  /* Hide overflow if content is too large */
+  white-space: normal;
+}
+*[data-tooltip]:hover::before {
+  opacity: 1;
+}
+
 
 main {
   height: 70vh;
@@ -234,6 +264,14 @@ nav ul li i {
   font-weight: 500;
   font-size: var(--normal);
   padding: 0 60px;
+}
+
+.aboutmelink {
+  color: var(--mauve);
+  text-decoration: none;
+}
+.aboutmelink:hover {
+  color: var(--lavender);
 }
 
 .content .habbits {
@@ -410,22 +448,22 @@ nav ul li i {
   margin-top: 30px;
 }
 
-.content .credits .used div{
+.content .credits .used div {
   display: flex;
   flex-direction: column;
 }
 
-.content .credits .used div a{
+.content .credits .used div a {
   text-decoration: none;
   color: var(--green);
   display: flex;
 }
 
-.content .credits .used div a:hover{
+.content .credits .used div a:hover {
   color: var(--teal);
 }
 
-.content .credits .used div a div:hover{
+.content .credits .used div a div:hover {
   color: var(--lavender);
 }
 

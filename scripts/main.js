@@ -137,12 +137,11 @@ function updateTerminal(id) {
   }
   if (id == "about_me") {
     terminal.lastElementChild.innerHTML = `
-                Hi! I'm an undergraduate student in Computer Science at IIT Dhanbad.
-            I'm passionate about cybersecurity, web development, and exploring
-            the deeper layers of computer science. When I'm not coding or diving
+                Hi! I'm a CS undergrad @ <a target="_blank" href="https://www.iitism.ac.in/" class="aboutmelink">IIT Dhanbad</a>.
+            I'm passionate about cybersecurity, web development, and everything about computer science :D</br><br> When I'm not coding or diving
             into tech, you'll probably find me reading a good book or immersed
-            in a great game. Oh, and yes — I use
-            <i class="nf nf-md-arch"></i> btw.
+            in a great game.</br></br> Oh, and yes — I use
+            <i class="nf nf-md-arch"></i> btw.<br><br><a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
     `;
   } else if (id == "skills") {
     terminal.lastElementChild.innerHTML = `
@@ -216,6 +215,7 @@ function updateTerminal(id) {
       chess: "rarely",
       sketching: "rarely",
       music: "very_often",
+      ricing: "very_often",
       typing: "very_often",
       competitive_prog: "often",
     };
