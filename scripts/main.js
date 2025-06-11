@@ -149,7 +149,7 @@ function updateTerminal(id) {
       Languages: [
       { name: "HTML", color: "orange", icon: "nf nf-dev-html5" },
       { name: "CSS", color: "blue", icon: "nf nf-dev-css3" },
-      { name: "JavaScript", color: "yellow", icon: "nf nf-fa-js" },
+      { name: "JS", color: "yellow", icon: "nf nf-fa-js" },
       { name: "C", color: "blue", icon: "nf nf-custom-c" },
       { name: "C++", color: "sapphire", icon: "nf nf-custom-cpp" },
       { name: "Python", color: "green", icon: "nf nf-dev-python" },
@@ -217,7 +217,7 @@ function updateTerminal(id) {
       music: "very_often",
       ricing: "very_often",
       typing: "very_often",
-      competitive_prog: "often",
+      comp_prog: "often",
     };
     let y = document.createElement("div");
     y.className = "habbits";
@@ -225,14 +225,14 @@ function updateTerminal(id) {
       coding: "https://www.github.com/crypticsaiyan",
       chess: "https://www.chess.com/member/organicaction",
       typing: "https://monkeytype.com/profile/CryptoSaiyan",
-      competitive_prog: "https://codeforces.com/profile/CryptoSaiyan",
+      comp_prog: "https://codeforces.com/profile/CryptoSaiyan",
     };
     for (i in hobblist) {
       if (
         i == "coding" ||
         i == "chess" ||
         i == "typing" ||
-        i == "competitive_prog"
+        i == "comp_prog"
       ) {
         y.append(hobb(hobblist[i], i, (cl = link[i])));
       } else y.append(hobb(hobblist[i], i));
@@ -320,7 +320,7 @@ function updateTerminal(id) {
               <div class="bold">icons:</div><a href="https://www.nerdfonts.com" target="_blank">nerdfont icons</a>
               </div>
               <div>
-              <div class="bold">theme:</div><a href="https://catppuccin.com/" target="_blank"><img src="/assets/images/catppuccin-logo.png" width="40" alt="catppuccin-logo">&nbsp;<div class = "mauve">catppuccin mocha</div></a>
+              <div class="bold">theme:</div><a href="https://catppuccin.com/" target="_blank"><img src="/assets/images/catppuccin-logo.png" width="40" height="40" alt="catppuccin-logo">&nbsp;<div class = "mauve">catppuccin mocha</div></a>
               </div>
             </div>
             </div>
