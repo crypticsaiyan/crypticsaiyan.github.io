@@ -144,46 +144,46 @@ function updateTerminal(id) {
             <i class="nf nf-md-arch"></i> btw.<br><br><a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
     `;
   } else if (id == "skills") {
+    // Improved skills section: more structured, easier to extend, DRY
+    const skills = {
+      Languages: [
+      { name: "HTML", color: "orange", icon: "nf nf-dev-html5" },
+      { name: "CSS", color: "blue", icon: "nf nf-dev-css3" },
+      { name: "JavaScript", color: "yellow", icon: "nf nf-fa-js" },
+      { name: "C", color: "blue", icon: "nf nf-custom-c" },
+      { name: "C++", color: "sapphire", icon: "nf nf-custom-cpp" },
+      { name: "Python", color: "green", icon: "nf nf-dev-python" },
+      ],
+      Tools: [
+      { name: "Linux", color: "black", icon: "nf nf-dev-linux" },
+      { name: "Git", color: "red", icon: "nf nf-dev-git" },
+      { name: "GitHub", color: "mauve", icon: "nf nf-cod-github" },
+      { name: "Neovim", color: "green", icon: "nf nf-custom-neovim" },
+      { name: "Arch Linux", color: "white", icon: "nf nf-md-arch" },
+      ],
+    };
+
+    function renderSkillGroup(title, items, groupClass) {
+      return `
+      <div class="bold white">${title}:</div>
+      <div class="${groupClass}">
+        ${items
+        .map(
+          (s) =>
+          `<div class="${s.color}">
+            <i class="${s.icon}"></i><span>${s.name}</span>
+          </div>`
+        )
+        .join("")}
+      </div>
+      `;
+    }
+
     terminal.lastElementChild.innerHTML = `
-                <div class="skills">
-              <div class="bold white">Languages:</div>
-              <div class="lang">
-                <div class="orange">
-                  <i class="nf nf-dev-html5"></i><span>HTML</span>
-                </div>
-                <div class="blue">
-                  <i class="nf nf-dev-css3"></i><span>CSS</span>
-                </div>
-                <div class="yellow">
-                  <i class="nf nf-fa-js"></i><span>JavaScript</span>
-                </div>
-                <div class="blue"><i class="nf nf-custom-c"></i><span>C</span></div>
-                <div class="sapphire">
-                  <i class="nf nf-custom-cpp"></i><span>C++</span>
-                </div>
-                <div class="green">
-                  <i class="nf nf-dev-python"></i><span>Python</span>
-                </div>
-              </div>
-              <div class="bold white">Tools:</div>
-              <div class="tools">
-                <div class="black">
-                  <i class="nf nf-dev-linux"></i><span>Linux</span>
-                </div>
-                <div class="red">
-                  <i class="nf nf-dev-git"></i><span>Git</span>
-                </div>
-                <div class="mauve">
-                  <i class="nf nf-cod-github"></i><span>GitHub</span>
-                </div>
-                <div class="green">
-                  <i class="nf nf-custom-neovim"></i><span>Neovim</span>
-                </div>
-                <div class="white">
-                  <i class="nf nf-md-arch"></i><span>Arch Linux</span>
-                </div>
-              </div>
-            </div>
+      <div class="skills">
+      ${renderSkillGroup("Languages", skills.Languages, "lang")}
+      ${renderSkillGroup("Tools", skills.Tools, "tools")}
+      </div>
     `;
   } else if (id == "hobbies/") {
     const hobcol = {
@@ -390,5 +390,24 @@ document.addEventListener("keydown", (event) => {
     }
   }
 });
+
+
+function highlightInstructionKey(key) {
+  const map = {
+    ArrowUp: "upkey", k: "upkey",
+    ArrowDown: "downkey", j: "downkey",
+    ArrowLeft: "leftkey", h: "leftkey",
+    ArrowRight: "rightkey", l: "rightkey",
+  };
+  const cls = map[key];
+  const instr = document.querySelector("header .instructions pre");
+  if (!cls || !instr) return;
+  instr.querySelectorAll(`.${cls}`).forEach(el => {
+    el.classList.add("red");
+    setTimeout(() => el.classList.remove("red"), 100);
+  });
+}
+
+document.addEventListener("keydown", e => highlightInstructionKey(e.key));
 
 updateTerminal("about_me");

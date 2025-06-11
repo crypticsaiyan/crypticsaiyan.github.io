@@ -70,6 +70,10 @@
   color: var(--lavender)
 }
 
+.flamingo {
+  color: var(--flamingo);
+}
+
 b {
   font-weight: 800;
 }
