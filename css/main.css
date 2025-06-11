@@ -332,6 +332,10 @@ nav ul li i {
   margin: 40px;
   font-size: 40px;
 }
+.leftarr:hover, .rightarr:hover{
+  cursor: pointer;
+  color: var(--orange);
+}
 
 .content .project .projectname {
   display: flex;
@@ -344,7 +348,9 @@ nav ul li i {
   text-decoration: none;
   color: var(--blue);
 }
-
+.content .project .projectname a:hover {
+  color: var(--sapphire);
+}
 .project .projectname div {
   font-size: var(--small);
 }

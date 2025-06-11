@@ -239,30 +239,71 @@ function updateTerminal(id) {
     }
     terminal.lastElementChild.replaceChildren(y);
   } else if (id == "projects/") {
-    function changeProject(projectname) {
-      terminal.lastElementChild.innerHTML = `
-            <div class="project">
-              <div class="group">
-                <div class="bold leftarr">&lt;</div>
-                <div class="projectimage">
-                  <img
-                    src="${projects[projectname][1]}"
-                    width="500px"
-                    alt="${projects[projectname][0]}"
-                  />
-                </div>
-                <div class="bold rightarr">&gt;</div>
-              </div>
-              <div class="projectname">
-                <a href="${projects[projectname][2]}"
-                  target="_blank">${projects[projectname][0]}</a
-                >
-                <div>${projects[projectname][3]}</div>
-              </div>
-            </div>
-    `;
-    }
-    changeProject("mindmeld");
+    changeProject(currProjectIndex);
   }
 }
-updateTerminal("about_me");
+
+let currProjectIndex = 0;
+const projectkeys = Object.keys(projects);
+function changeProject(currProjectIndex) {
+  projectname = projectkeys[currProjectIndex];
+  terminal.lastElementChild.innerHTML = `
+  <div class="project">
+  <div class="group">
+  <div class="bold leftarr">&lt;</div>
+  <div class="projectimage">
+  <img
+  src="${projects[projectname][1]}"
+  width="500px"
+  alt="${projects[projectname][0]}"
+  />
+  </div>
+  <div class="bold rightarr">&gt;</div>
+  </div>
+  <div class="projectname">
+  <a href="${projects[projectname][2]}"
+  target="_blank">${projects[projectname][0]}</a
+  >
+  <div>${projects[projectname][3]}</div>
+  </div>
+  </div>
+  `;
+  if (currProjectIndex == 0) {
+    terminal.lastElementChild.querySelector(".leftarr").style.visibility =
+    "hidden";
+  }
+  if (currProjectIndex == projectkeys.length - 1) {
+    terminal.lastElementChild.querySelector(".rightarr").style.visibility =
+    "hidden";
+  }
+}
+terminal.addEventListener("click", (event) => {
+  if (document.getElementById("projects/").classList.contains("active")) {
+    if (event.target.classList.contains("leftarr")) {
+      if (currProjectIndex > 0) {
+        changeProject(--currProjectIndex);
+      }
+    }
+    if (event.target.classList.contains("rightarr")) {
+      if (currProjectIndex < projectkeys.length - 1) {
+        changeProject(++currProjectIndex);
+      }
+    }
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (document.getElementById("projects/").classList.contains("active")) {
+    if (event.key === "ArrowLeft" || event.key === "h") {
+      if (currProjectIndex > 0) {
+        changeProject(--currProjectIndex);
+      }
+    }
+    if (event.key === "ArrowRight" || event.key == "l") {
+      if (currProjectIndex < projectkeys.length - 1) {
+        changeProject(++currProjectIndex);
+      }
+    }
+  }
+});
+
+// updateTerminal("about_me");
