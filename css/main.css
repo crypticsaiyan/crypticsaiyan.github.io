@@ -332,7 +332,8 @@ nav ul li i {
   margin: 40px;
   font-size: 40px;
 }
-.leftarr:hover, .rightarr:hover{
+.leftarr:hover,
+.rightarr:hover {
   cursor: pointer;
   color: var(--orange);
 }
@@ -353,6 +354,79 @@ nav ul li i {
 }
 .project .projectname div {
   font-size: var(--small);
+}
+
+.content .contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 30vh;
+  column-gap: 50px;
+  margin-top: 30px;
+}
+
+.content .contact > a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  /* border: 2px solid red; */
+  width: 40%;
+  height: 75px;
+  gap: 15px;
+  text-decoration: none;
+}
+
+.content .contact > a i {
+  font-size: 50px;
+}
+
+.content .contact > a .details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.content .contact > a .details .userid {
+  font-size: var(--small);
+  color: var(--white);
+  margin-top: -5px;
+}
+
+.content .credits {
+  display: flex;
+  flex-direction: column;
+  margin-top: -50px;
+}
+
+.content .credits .used {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  font-size: 22px;
+  margin-top: 30px;
+}
+
+.content .credits .used div{
+  display: flex;
+  flex-direction: column;
+}
+
+.content .credits .used div a{
+  text-decoration: none;
+  color: var(--green);
+  display: flex;
+}
+
+.content .credits .used div a:hover{
+  color: var(--teal);
+}
+
+.content .credits .used div a div:hover{
+  color: var(--lavender);
 }
 
 footer {

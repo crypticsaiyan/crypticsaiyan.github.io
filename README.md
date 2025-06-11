@@ -4,3 +4,4 @@
 - [ ] Add Gradient to terminal border
 - [ ] Add glitch to blinking text
 - [ ] Add animations
+- [ ] Fix text highlighting

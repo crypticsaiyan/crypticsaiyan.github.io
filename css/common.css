@@ -65,3 +65,11 @@
 .sky {
   color: var(--sky);
 }
+
+.lavender {
+  color: var(--lavender)
+}
+
+b {
+  font-weight: 800;
+}

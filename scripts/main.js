@@ -94,7 +94,7 @@ const mappings = {
   about_me: ["cat", "about_me.txt"],
   skills: ["displayskills", ""],
   "hobbies/": ["ls", "hobbies"],
-  get_in_touch: ["eza", ""],
+  "get_in_touch/": ["eza --icons", ""],
   credits: ["cowsaycredits", ""],
 };
 
@@ -240,6 +240,91 @@ function updateTerminal(id) {
     terminal.lastElementChild.replaceChildren(y);
   } else if (id == "projects/") {
     changeProject(currProjectIndex);
+  } else if (id == "get_in_touch/") {
+    const contactlist = {
+      github: [
+        "Github",
+        "mauve",
+        "https://www.github.com/crypticsaiyan",
+        "nf-cod-github",
+        "@crypticsaiyan",
+      ],
+      discord: [
+        "Discord",
+        "lavender",
+        "https://www.discord.com/users/uisupersaiyan3",
+        "nf-fa-discord",
+        "@uisupersaiyan3",
+      ],
+      email: [
+        "Email",
+        "red",
+        "mailto:crypticsaiyan@proton.me",
+        "nf-md-email_outline",
+        "crypticsaiyan@proton.me",
+      ],
+      instagram: [
+        "Instagram",
+        "pink",
+        "https://www.instagram.com/mightberahul",
+        "nf-fa-instagram",
+        "@mightberahul",
+      ],
+      linkedin: [
+        "LinkedIn",
+        "blue",
+        "https://www.linkedin.com/in/rahul-joshi-059a882a7/",
+        "nf-dev-linkedin",
+        "Rahul Joshi",
+      ],
+      reddit: [
+        "Reddit",
+        "orange",
+        "https://www.reddit.com/user/uisupersaiyan-3/",
+        "nf-fa-reddit",
+        "@uisupersaiyan-3",
+      ],
+    };
+    let contacts = document.createElement("div");
+    contacts.className = "contact";
+    for (i in contactlist) {
+      let card = document.createElement("a");
+      card.classList.add(contactlist[i][1]);
+      card.href = contactlist[i][2];
+      card.target = "_blank";
+      card.innerHTML = `
+                <i class="nf ${contactlist[i][3]}"></i>
+                <div class="details">
+                  <div class="site">${contactlist[i][0]}</div>
+                  <div class="userid">${contactlist[i][4]}</div>
+                </div>
+      `;
+      contacts.append(card);
+    }
+    terminal.lastElementChild.replaceChildren(contacts);
+  } else if (id == "credits") {
+    terminal.lastElementChild.innerHTML = `
+    <div class="credits">
+            <div style="white-space: pre;">
+  _______________________________________
+ < Made with lots of <span class="red nf nf-cod-heart"></span> by CrypticSaiyan >
+  ---------------------------------------
+         \\   ^__^
+          \\  (oo)\\_______
+             (__)\\       )\\/\\
+                 ||----w |
+                 ||     ||
+            </div>
+            <div class="used">
+              <div>
+              <div class="bold">icons:</div><a href="https://www.nerdfonts.com" target="_blank">nerdfont icons</a>
+              </div>
+              <div>
+              <div class="bold">theme:</div><a href="https://catppuccin.com/" target="_blank"><img src="/assets/images/catppuccin-logo.png" width="40" alt="catppuccin-logo">&nbsp;<div class = "mauve">catppuccin mocha</div></a>
+              </div>
+            </div>
+            </div>
+    `;
   }
 }
 
@@ -270,11 +355,11 @@ function changeProject(currProjectIndex) {
   `;
   if (currProjectIndex == 0) {
     terminal.lastElementChild.querySelector(".leftarr").style.visibility =
-    "hidden";
+      "hidden";
   }
   if (currProjectIndex == projectkeys.length - 1) {
     terminal.lastElementChild.querySelector(".rightarr").style.visibility =
-    "hidden";
+      "hidden";
   }
 }
 terminal.addEventListener("click", (event) => {
@@ -306,4 +391,4 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// updateTerminal("about_me");
+updateTerminal("about_me");
