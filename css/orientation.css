@@ -1,0 +1,28 @@
+/* Hide the landscape warning by default */
+.landscape-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  z-index: 9999;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Show warning only on mobile devices in landscape */
+@media screen and (orientation: landscape) and (max-width: 915px) {
+  .landscape-warning {
+    display: flex;
+  }
+
+  body > *:not(.landscape-warning) {
+    display: none;
+  }
+}

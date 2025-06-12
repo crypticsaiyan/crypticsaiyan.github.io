@@ -1,9 +1,8 @@
 - [x] Add grain
-- [ ] Add Cursor
+- [x] Add Cursor
 - [ ] Pixel Icons
-- [ ] Add Gradient to terminal border
+- [x] Add Gradient to terminal border
 - [ ] Add glitch to blinking text
 - [ ] Add animations
 - [ ] Fix text highlighting
-- [ ] Landscape in tablet
-- [ ] Portrait in phone
+- [x] Portrait in phone

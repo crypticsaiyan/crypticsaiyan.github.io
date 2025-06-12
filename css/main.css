@@ -239,8 +239,12 @@ nav ul li i {
 .terminal {
   width: 80%;
   min-height: 75%;
-  border: 3px solid var(--lavender);
+  border: 3px solid #f2d5cfff;
   background-color: var(--darkest);
+  /* border: 3px solid transparent;
+  background: linear-gradient(var(--darkest), var(--darkest)) padding-box,
+    linear-gradient(45deg, #ca9ee6ff, #f2d5cfff) border-box; */
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   padding: 40px;
