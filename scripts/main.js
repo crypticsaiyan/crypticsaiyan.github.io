@@ -426,6 +426,16 @@ terminal.addEventListener("click", (event) => {
       }
     }
   }
+  if (event.target.classList.contains("leftarr")) {
+    if (currProjectIndex > 0) {
+      changeProject(--currProjectIndex);
+    }
+  }
+  if (event.target.classList.contains("rightarr")) {
+    if (currProjectIndex < projectkeys.length - 1) {
+      changeProject(++currProjectIndex);
+    }
+  }
 });
 document.addEventListener("keydown", (event) => {
   if (document.getElementById("projects/").classList.contains("active")) {
