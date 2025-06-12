@@ -126,7 +126,7 @@ header .instructions {
 }
 
 header .instructions:hover {
-  cursor: pointer;
+  cursor: none;
 }
 
 *[data-tooltip] {
@@ -375,7 +375,7 @@ nav ul li i {
 }
 .leftarr:hover,
 .rightarr:hover {
-  cursor: pointer;
+  cursor: none;
   color: var(--orange);
 }
 

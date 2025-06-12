@@ -1,0 +1,37 @@
+* {
+  cursor: none !important;
+}
+
+.cursor {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  position: absolute;
+  z-index: 100;
+  pointer-events: none;
+  background: white;
+  mix-blend-mode: difference;
+  opacity: 1;
+  transition: scale 0.2s ease-in-out;
+}
+
+.click {
+  /* background-color: var(--mauve); */
+  animation: clickAni 0.2s ease-out;
+}
+
+@keyframes clickAni {
+  0% {
+  }
+  50% {
+    background-color: var(--lavender);
+    /* opacity: 0.5; */
+  }
+  100% {
+  }
+}
+
+.hover-link {
+  scale: 3;
+}
+

@@ -31,7 +31,7 @@
 }
 
 .hover:hover {
-  cursor: pointer;
+  cursor: none;
 }
 
 .green {
