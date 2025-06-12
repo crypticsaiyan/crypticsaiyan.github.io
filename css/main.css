@@ -689,7 +689,7 @@ footer div > span {
     align-items: flex-start;
     justify-content: center;
   }
-  .mobilenav nav {
+  .mobilenav .nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -698,7 +698,7 @@ footer div > span {
   .carleftarr,
   .carrightarr {
     font-size: 25px;
-
+    color: var(--white);
     font-weight: 800;
   }
 
@@ -740,29 +740,32 @@ footer div > span {
   div.carousel-viewport {
     width: 80vw;
     height: 4vh;
-    /* border: 2px solid green; */
     overflow: hidden;
     display: flex;
     justify-content: center;
-    border-right: 2px solid var(--lavender);
-    border-left: 2px solid var(--lavender);
   }
-
+  .nav ul li i {
+    font-size: var(--large);
+  }
   ul.carousel {
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
-    width: 96%;
+    width: 100%;
     height: 100%;
     padding: 0;
     margin: 0;
     list-style: none;
+    transition: all 0.2s ease-out;
   }
 
   ul.carousel li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     flex: none;
     width: 100%;
     font-weight: 700;
+    padding-left: 10px;
   }
   .mobhigh.file {
     color: var(--dark-violet);
@@ -815,10 +818,10 @@ footer div > span {
     --normal: 1.05rem;
     --small: 0.85rem;
   }
-  .content{
+  .content {
     margin-top: 10px;
   }
-  .content .contact > a{
+  .content .contact > a {
     height: 60px;
   }
 }

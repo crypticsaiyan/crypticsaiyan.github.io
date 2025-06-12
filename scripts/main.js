@@ -131,7 +131,9 @@ function updateTerminal(id) {
   if (id != "projects/") {
     terminal.firstElementChild.innerHTML = `
               <div class="text">
-              <span class="bold red">╭─${mediaQuery.matches?"cs":"cryptosaiyan"}</span>
+              <span class="bold red">╭─${
+                mediaQuery.matches ? "cs" : "cryptosaiyan"
+              }</span>
               <span class="rosewater">in</span>
               <span class="bold pink">/${
                 mediaQuery && id == "get_in_touch/" ? "contacts" : id
@@ -151,10 +153,16 @@ function updateTerminal(id) {
   if (id == "about_me") {
     terminal.lastElementChild.innerHTML = `
                 Hi! I'm a CS undergrad @ <a target="_blank" href="https://www.iitism.ac.in/" class="aboutmelink">IIT Dhanbad</a>.
-            I'm passionate about cybersecurity, web development, and everything about computer science :D</br>${mediaQuery2.matches?"":"<br>"} When I'm not coding or diving
+            I'm passionate about cybersecurity, web development, and everything about computer science :D</br>${
+              mediaQuery2.matches ? "" : "<br>"
+            } When I'm not coding or diving
             into tech, you'll probably find me reading a good book or immersed
-            in a great game.</br>${mediaQuery3.matches?"":"<br>"} Oh, and yes — I use
-            <i class="nf nf-md-arch"></i> btw.<br>${mediaQuery3.matches?"":"<br>"}<a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
+            in a great game.</br>${
+              mediaQuery3.matches ? "" : "<br>"
+            } Oh, and yes — I use
+            <i class="nf nf-md-arch"></i> btw.<br>${
+              mediaQuery3.matches ? "" : "<br>"
+            }<a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
     `;
   } else if (id == "skills") {
     // Improved skills section: more structured, easier to extend, DRY
@@ -333,8 +341,8 @@ function updateTerminal(id) {
             </div>
             </div>
     `;
-    if(mediaQuery.matches) {
-    terminal.lastElementChild.innerHTML = `
+    if (mediaQuery.matches) {
+      terminal.lastElementChild.innerHTML = `
     <div class="credits">
             <div style="white-space: pre;">
   ____________________
@@ -456,4 +464,47 @@ function highlightInstructionKey(key) {
 
 document.addEventListener("keydown", (e) => highlightInstructionKey(e.key));
 
-updateTerminal("about_me");
+// phone nav
+let carouselcont = document.querySelector(".mobilenav ul");
+let carouselitems = Array.from(carouselcont.children);
+let carousellength = carouselitems.length;
+let carouselIndex = 0;
+function updateCarousel(direction) {
+  if (direction === "next") {
+    carouselcont.style.transform = `translateX(-${++carouselIndex * 100}%)`;
+  } else if (direction === "prev") {
+    carouselcont.style.transform = `translateX(-${--carouselIndex * 100}%)`;
+  }
+  if (carouselIndex === 0) {
+    carleftarrow.style.opacity = "0.4";
+  } else {
+    carleftarrow.style.opacity = "1";
+  }
+  if (carouselIndex === carousellength - 1) {
+    carrightarrow.style.opacity = "0.4";
+  } else {
+    carrightarrow.style.opacity = "1";
+  }
+}
+
+carleftarrow = document.querySelector(".mobilenav .carleftarr");
+carleftarrow.style.opacity = "0.4";
+carrightarrow = document.querySelector(".mobilenav .carrightarr");
+carleftarrow.addEventListener("click", () => {
+  if (carouselIndex > 0) {
+    updateCarousel("prev");
+    updateTerminal(items[carouselIndex].id);
+  }
+});
+carrightarrow.addEventListener("click", () => {
+  if (carouselIndex < carousellength - 1) {
+    updateCarousel("next");
+    updateTerminal(items[carouselIndex].id);
+  }
+});
+
+function main() {
+  updateTerminal("about_me");
+}
+
+main();
