@@ -5,3 +5,5 @@
 - [ ] Add glitch to blinking text
 - [ ] Add animations
 - [ ] Fix text highlighting
+- [ ] Landscape in tablet
+- [ ] Portrait in phone

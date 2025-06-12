@@ -1,14 +1,25 @@
 // function to make the hey text blink
 let frame = document.createElement("img");
-frame.src = "assets/images/frame1.png";
+
+const mediaQuery = window.matchMedia("(max-width: 900px)");
+const mediaQuery2 = window.matchMedia("(max-width: 425px)");
+const mediaQuery3 = window.matchMedia("(max-height: 675px)");
+if (!mediaQuery.matches) frame.src = "assets/images/frame1.png";
+else frame.src = "assets/images/mobframe1.png";
 
 let hey = document.querySelector(".hey");
 hey.append(frame);
 function blinkHey() {
   setInterval(() => {
-    if (frame.src.endsWith("frame1.png"))
-      frame.src = "assets/images/frame2.png";
-    else frame.src = "assets/images/frame1.png";
+    if (!mediaQuery.matches) {
+      if (frame.src.endsWith("frame1.png"))
+        frame.src = "assets/images/frame2.png";
+      else frame.src = "assets/images/frame1.png";
+    } else {
+      if (frame.src.endsWith("mobframe1.png"))
+        frame.src = "assets/images/mobframe2.png";
+      else frame.src = "assets/images/mobframe1.png";
+    }
   }, 250);
 }
 blinkHey();
@@ -120,9 +131,11 @@ function updateTerminal(id) {
   if (id != "projects/") {
     terminal.firstElementChild.innerHTML = `
               <div class="text">
-              <span class="bold red">╭─cryptosaiyan</span>
+              <span class="bold red">╭─${mediaQuery.matches?"cs":"cryptosaiyan"}</span>
               <span class="rosewater">in</span>
-              <span class="bold pink">/${id}</span><br />
+              <span class="bold pink">/${
+                mediaQuery && id == "get_in_touch/" ? "contacts" : id
+              }</span><br />
               <span class="bold"
                 ><span class="red">╰─λ</span
                 ><span class="blue"> ${mappings[id][0]}</span></span
@@ -132,34 +145,34 @@ function updateTerminal(id) {
   `;
   } else {
     terminal.firstElementChild.innerHTML = `
-    <div class="mauve bold" style="text-align: center;">Projects</div>
+    <div class="mauve bold" style="text-align: center;font-size: var(--large);">Projects</div>
     `;
   }
   if (id == "about_me") {
     terminal.lastElementChild.innerHTML = `
                 Hi! I'm a CS undergrad @ <a target="_blank" href="https://www.iitism.ac.in/" class="aboutmelink">IIT Dhanbad</a>.
-            I'm passionate about cybersecurity, web development, and everything about computer science :D</br><br> When I'm not coding or diving
+            I'm passionate about cybersecurity, web development, and everything about computer science :D</br>${mediaQuery2.matches?"":"<br>"} When I'm not coding or diving
             into tech, you'll probably find me reading a good book or immersed
-            in a great game.</br></br> Oh, and yes — I use
-            <i class="nf nf-md-arch"></i> btw.<br><br><a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
+            in a great game.</br>${mediaQuery3.matches?"":"<br>"} Oh, and yes — I use
+            <i class="nf nf-md-arch"></i> btw.<br>${mediaQuery3.matches?"":"<br>"}<a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
     `;
   } else if (id == "skills") {
     // Improved skills section: more structured, easier to extend, DRY
     const skills = {
       Languages: [
-      { name: "HTML", color: "orange", icon: "nf nf-dev-html5" },
-      { name: "CSS", color: "blue", icon: "nf nf-dev-css3" },
-      { name: "JS", color: "yellow", icon: "nf nf-fa-js" },
-      { name: "C", color: "blue", icon: "nf nf-custom-c" },
-      { name: "C++", color: "sapphire", icon: "nf nf-custom-cpp" },
-      { name: "Python", color: "green", icon: "nf nf-dev-python" },
+        { name: "HTML", color: "orange", icon: "nf nf-dev-html5" },
+        { name: "CSS", color: "blue", icon: "nf nf-dev-css3" },
+        { name: "JS", color: "yellow", icon: "nf nf-fa-js" },
+        { name: "C", color: "blue", icon: "nf nf-custom-c" },
+        { name: "C++", color: "sapphire", icon: "nf nf-custom-cpp" },
+        { name: "Python", color: "green", icon: "nf nf-dev-python" },
       ],
       Tools: [
-      { name: "Linux", color: "black", icon: "nf nf-dev-linux" },
-      { name: "Git", color: "red", icon: "nf nf-dev-git" },
-      { name: "GitHub", color: "mauve", icon: "nf nf-cod-github" },
-      { name: "Neovim", color: "green", icon: "nf nf-custom-neovim" },
-      { name: "Arch Linux", color: "white", icon: "nf nf-md-arch" },
+        { name: "Linux", color: "black", icon: "nf nf-dev-linux" },
+        { name: "Git", color: "red", icon: "nf nf-dev-git" },
+        { name: "GitHub", color: "mauve", icon: "nf nf-cod-github" },
+        { name: "Neovim", color: "green", icon: "nf nf-custom-neovim" },
+        { name: "Arch Linux", color: "white", icon: "nf nf-md-arch" },
       ],
     };
 
@@ -168,13 +181,13 @@ function updateTerminal(id) {
       <div class="bold white">${title}:</div>
       <div class="${groupClass}">
         ${items
-        .map(
-          (s) =>
-          `<div class="${s.color}">
+          .map(
+            (s) =>
+              `<div class="${s.color}">
             <i class="${s.icon}"></i><span>${s.name}</span>
           </div>`
-        )
-        .join("")}
+          )
+          .join("")}
       </div>
       `;
     }
@@ -228,12 +241,7 @@ function updateTerminal(id) {
       comp_prog: "https://codeforces.com/profile/CryptoSaiyan",
     };
     for (i in hobblist) {
-      if (
-        i == "coding" ||
-        i == "chess" ||
-        i == "typing" ||
-        i == "comp_prog"
-      ) {
+      if (i == "coding" || i == "chess" || i == "typing" || i == "comp_prog") {
         y.append(hobb(hobblist[i], i, (cl = link[i])));
       } else y.append(hobb(hobblist[i], i));
     }
@@ -307,7 +315,7 @@ function updateTerminal(id) {
     <div class="credits">
             <div style="white-space: pre;">
   _______________________________________
- < Made with lots of <span class="red nf nf-cod-heart"></span> by CrypticSaiyan >
+ < Made with lots of <span class="red nf nf-cod-heart"></span> by CryptoSaiyan >
   ---------------------------------------
          \\   ^__^
           \\  (oo)\\_______
@@ -325,6 +333,31 @@ function updateTerminal(id) {
             </div>
             </div>
     `;
+    if(mediaQuery.matches) {
+    terminal.lastElementChild.innerHTML = `
+    <div class="credits">
+            <div style="white-space: pre;">
+  ____________________
+ < Made with lots of 
+   <span class="red nf nf-cod-heart"></span> by CryptoSaiyan >
+  --------------------
+         \\   ^__^
+          \\  (oo)\\_______
+             (__)\\       )\\/\\
+                 ||----w |
+                 ||     ||
+            </div>
+            <div class="used">
+              <div>
+              <div class="bold">icons:</div><a href="https://www.nerdfonts.com" target="_blank">nerdfont icons</a>
+              </div>
+              <div>
+              <div class="bold">theme:</div><a href="https://catppuccin.com/" target="_blank"><img src="/assets/images/catppuccin-logo.png" width="40" height="40" alt="catppuccin-logo">&nbsp;<div class = "mauve">catppuccin mocha</div></a>
+              </div>
+            </div>
+            </div>
+    `;
+    }
   }
 }
 
@@ -345,6 +378,10 @@ function changeProject(currProjectIndex) {
   </div>
   <div class="bold rightarr">&gt;</div>
   </div>
+  <div class="mobileprojectarrows">
+  <div class="leftarr">&lt;</div>
+  <div class="rightarr">&gt;</div>
+  </div>
   <div class="projectname">
   <a href="${projects[projectname][2]}"
   target="_blank">${projects[projectname][0]}</a
@@ -356,10 +393,16 @@ function changeProject(currProjectIndex) {
   if (currProjectIndex == 0) {
     terminal.lastElementChild.querySelector(".leftarr").style.visibility =
       "hidden";
+    terminal.lastElementChild.querySelector(
+      ".mobileprojectarrows .leftarr"
+    ).style.opacity = "0.4";
   }
   if (currProjectIndex == projectkeys.length - 1) {
     terminal.lastElementChild.querySelector(".rightarr").style.visibility =
       "hidden";
+    terminal.lastElementChild.querySelector(
+      ".mobileprojectarrows .rightarr"
+    ).style.opacity = "0.4";
   }
 }
 terminal.addEventListener("click", (event) => {
@@ -391,23 +434,26 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-
 function highlightInstructionKey(key) {
   const map = {
-    ArrowUp: "upkey", k: "upkey",
-    ArrowDown: "downkey", j: "downkey",
-    ArrowLeft: "leftkey", h: "leftkey",
-    ArrowRight: "rightkey", l: "rightkey",
+    ArrowUp: "upkey",
+    k: "upkey",
+    ArrowDown: "downkey",
+    j: "downkey",
+    ArrowLeft: "leftkey",
+    h: "leftkey",
+    ArrowRight: "rightkey",
+    l: "rightkey",
   };
   const cls = map[key];
   const instr = document.querySelector("header .instructions pre");
   if (!cls || !instr) return;
-  instr.querySelectorAll(`.${cls}`).forEach(el => {
+  instr.querySelectorAll(`.${cls}`).forEach((el) => {
     el.classList.add("red");
     setTimeout(() => el.classList.remove("red"), 100);
   });
 }
 
-document.addEventListener("keydown", e => highlightInstructionKey(e.key));
+document.addEventListener("keydown", (e) => highlightInstructionKey(e.key));
 
 updateTerminal("about_me");
