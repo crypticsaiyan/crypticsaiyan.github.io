@@ -1,0 +1,8 @@
+- [x] Add grain
+- [x] Add Cursor
+- [ ] Pixel Icons
+- [x] Add Gradient to terminal border
+- [ ] Add glitch to blinking text
+- [ ] Add animations
+- [ ] Fix text highlighting
+- [x] Portrait in phone
