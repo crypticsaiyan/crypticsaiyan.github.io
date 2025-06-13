@@ -8,3 +8,4 @@
 - [x] Portrait in phone
 - [ ] Make scroll navigation in phone
 - [x] Fix projects in phone
+- [ ] Fix hover issue
