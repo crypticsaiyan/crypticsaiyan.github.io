@@ -10,3 +10,4 @@
 - [x] Fix projects in phone
 - [ ] Fix hover issue
 - [ ] Full screen
+- [ ] Add loading animation
