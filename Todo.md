@@ -9,3 +9,4 @@
 - [ ] Make scroll navigation in phone
 - [x] Fix projects in phone
 - [ ] Fix hover issue
+- [ ] Full screen
