@@ -704,6 +704,8 @@ footer div > span {
     font-size: 25px;
     color: var(--white);
     font-weight: 800;
+    padding: 0 10px;
+    /* border: 2px solid red; */
   }
 
   .projectimage img {
@@ -742,7 +744,7 @@ footer div > span {
   }
 
   div.carousel-viewport {
-    width: 80vw;
+    width: 70vw;
     height: 4vh;
     overflow: hidden;
     display: flex;
@@ -829,7 +831,7 @@ footer div > span {
     height: 60px;
   }
 }
-@media (max-height: 790px) {
+@media (max-height: 790px) and (orientation: portrait) {
   header {
     height: 20vh;
   }
@@ -863,7 +865,7 @@ footer div > span {
     margin-top: -63px;
   }
 }
-@media (max-height: 725px) {
+@media (max-height: 725px) and (orientation: portrait) {
   .terminal {
     height: 95%;
   }

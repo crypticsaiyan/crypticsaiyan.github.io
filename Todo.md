@@ -6,7 +6,7 @@
 - [ ] Add animations
 - [ ] Fix text highlighting
 - [x] Portrait in phone
-- [ ] Make scroll navigation in phone
+- [x] Make scroll navigation in phone
 - [x] Fix projects in phone
 - [ ] Fix hover issue
 - [ ] Full screen
