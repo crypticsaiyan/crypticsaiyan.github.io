@@ -911,4 +911,10 @@ footer div > span {
   .project {
     gap: 30px;
   }
+  .lang, .tools{
+    row-gap: 13px;
+  }
+  .lang div, .tools div{
+    gap: 0px;
+  }
 }

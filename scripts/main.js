@@ -180,7 +180,7 @@ function updateTerminal(id) {
         { name: "Git", color: "red", icon: "nf nf-dev-git" },
         { name: "GitHub", color: "mauve", icon: "nf nf-cod-github" },
         { name: "Neovim", color: "green", icon: "nf nf-custom-neovim" },
-        { name: "Arch Linux", color: "white", icon: "nf nf-md-arch" },
+        { name: "Arch", color: "white", icon: "nf nf-md-arch" },
       ],
     };
 
