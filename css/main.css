@@ -646,7 +646,7 @@ footer div > span {
 
   header .hey img {
     margin-left: 0;
-    width: 70vw;
+    width: min(375px, 70vw);
     bottom: 0;
   }
   main {
