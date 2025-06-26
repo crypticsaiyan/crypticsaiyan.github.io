@@ -131,7 +131,7 @@ function updateTerminal(id) {
   if (id != "projects/") {
     terminal.firstElementChild.innerHTML = `
               <div class="text">
-              <span class="bold red">╭─${
+              <span class="bold red">${
                 mediaQuery.matches ? "cs" : "cryptosaiyan"
               }</span>
               <span class="rosewater">in</span>
@@ -139,7 +139,7 @@ function updateTerminal(id) {
                 mediaQuery && id == "get_in_touch/" ? "contacts" : id
               }</span><br />
               <span class="bold"
-                ><span class="red">╰─λ</span
+                ><span class="red">\$</span
                 ><span class="blue"> ${mappings[id][0]}</span></span
               >
               <span class="rosewater">${mappings[id][1]}</span>

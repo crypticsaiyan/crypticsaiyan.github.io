@@ -3,9 +3,9 @@
 
 :root {
   --noise-url: url("/assets/images/rainbow.png");
-  --normal: 24px;
-  --small: 18px;
-  --large: 28px;
+  --normal: 1.4rem;
+  --small: 1.2rem;
+  --large: 1.7rem;
 }
 
 * {
@@ -111,6 +111,7 @@ header .hey {
 header .hey img {
   position: absolute;
   margin-left: 100px;
+  width: 850px;
 }
 
 header .instructions {
@@ -237,7 +238,7 @@ nav ul li i {
 }
 
 .terminal {
-  width: 80%;
+  width: 75%;
   min-height: 75%;
   border: 3px solid #f2d5cfff;
   background-color: var(--darkest);
@@ -249,6 +250,7 @@ nav ul li i {
   flex-direction: column;
   padding: 40px;
   padding-bottom: 0px;
+  padding: 30px;
   gap: 30px;
 }
 
@@ -270,7 +272,7 @@ nav ul li i {
   color: var(--rosewater);
   font-weight: 500;
   font-size: var(--normal);
-  padding: 0 60px;
+  padding: 0 30px;
 }
 
 .aboutmelink {
@@ -333,7 +335,7 @@ nav ul li i {
 
 .lang div i,
 .tools div i {
-  font-size: 40px;
+  font-size: 2rem;
 }
 
 .lang div span,
@@ -430,7 +432,7 @@ nav ul li i {
 }
 
 .content .contact > a i {
-  font-size: 50px;
+  font-size: 2.5rem;
 }
 
 .content .contact > a .details {
@@ -502,29 +504,10 @@ footer div > span {
 }
 
 @media (max-width: 1750px) {
-  .right {
-    width: 65%;
-  }
-  /* .terminal {
-    width: 90%;
-  } */
-  .left {
-    width: 35%;
-  }
-  .projectimage img {
-    width: 450px;
-  }
-  .lang,
-  .tools {
-    gap: 10px 7px;
-  }
-}
-
-@media (max-width: 1500px) {
   .terminal {
     width: 85%;
     padding: 30px;
-    min-height: 70%;
+    min-height: 75%;
   }
   :root {
     --normal: 22px;
@@ -534,7 +517,7 @@ footer div > span {
     line-height: 26px;
   }
   header .hey img {
-    width: 60vw;
+    width: 45vw;
     bottom: 30px;
   }
   .content .contact > a {
@@ -556,7 +539,7 @@ footer div > span {
     padding: 0px;
   }
   .content .contact > a i {
-    font-size: 40px;
+    font-size: 2rem;
   }
 }
 
@@ -608,7 +591,7 @@ footer div > span {
   }
   .lang div i,
   .tools div i {
-    font-size: 35px;
+    font-size: 2rem;
   }
   .lang div span,
   .tools div span {
@@ -856,7 +839,7 @@ footer div > span {
     padding: 0px;
   }
   .content .contact > a i {
-    font-size: 32px;
+    font-size: 1.75rem;
   }
   .content .contact > a {
     height: 60px;

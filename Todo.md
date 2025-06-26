@@ -11,3 +11,4 @@
 - [ ] Fix hover issue
 - [ ] Full screen
 - [ ] Add loading animation
+- [ ] Add timeline bio
