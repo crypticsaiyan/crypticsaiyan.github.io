@@ -273,6 +273,7 @@ nav ul li i {
   font-weight: 500;
   font-size: var(--normal);
   padding: 0 30px;
+  height: 100%;
 }
 
 .aboutmelink {
