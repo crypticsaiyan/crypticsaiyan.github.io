@@ -549,7 +549,7 @@ footer div > span {
   }
 }
 
-@media (max-height: 850px) {
+@media (max-height: 850px) and (width<height){
   header {
     height: 23vh;
   }
