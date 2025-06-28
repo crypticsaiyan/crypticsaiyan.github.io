@@ -299,10 +299,6 @@ nav ul li i {
 .content .habbits .habbititem div {
   text-align: left;
   width: 33%;
-  /* :root {
-    --normal: 22px;
-    --small: 18px;
-  } */
 }
 
 .content .habbits .habbititem a {
@@ -515,10 +511,10 @@ footer div > span {
     padding: 30px;
     min-height: 75%;
   }
-  /* :root {
-    --normal: 22px;
-    --small: 18px;
-  } */
+  :root {
+    --normal: 1.2rem;
+    --small: 1rem;
+  }
   .prompt .text {
     line-height: 26px;
   }
@@ -543,6 +539,10 @@ footer div > span {
 @media (max-width: 1250px) {
   .content {
     padding: 0px;
+  }
+  :root {
+    --normal: 1rem;
+    --small: 0.8rem;
   }
   .content .contact > a i {
     font-size: 2rem;
