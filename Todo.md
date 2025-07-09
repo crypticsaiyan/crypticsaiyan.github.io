@@ -12,3 +12,6 @@
 - [ ] Full screen
 - [ ] Add loading animation
 - [ ] Add timeline bio
+- [ ] Fix tools and skills
+- [ ] Fix projects
+- [ ] Fix icons fonts 

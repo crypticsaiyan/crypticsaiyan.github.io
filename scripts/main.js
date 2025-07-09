@@ -279,26 +279,12 @@ function updateTerminal(id) {
         "nf-md-email_outline",
         "crypticsaiyan@proton.me",
       ],
-      instagram: [
-        "Instagram",
-        "pink",
-        "https://www.instagram.com/mightberahul",
-        "nf-fa-instagram",
-        "@mightberahul",
-      ],
       linkedin: [
         "LinkedIn",
         "blue",
         "https://www.linkedin.com/in/rahul-joshi-059a882a7/",
         "nf-dev-linkedin",
         "Rahul Joshi",
-      ],
-      reddit: [
-        "Reddit",
-        "orange",
-        "https://www.reddit.com/user/uisupersaiyan-3/",
-        "nf-fa-reddit",
-        "@uisupersaiyan-3",
       ],
     };
     let contacts = document.createElement("div");
