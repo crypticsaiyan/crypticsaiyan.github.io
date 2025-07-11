@@ -8,10 +8,12 @@
 - [x] Portrait in phone
 - [x] Make scroll navigation in phone
 - [x] Fix projects in phone
-- [ ] Fix hover issue
-- [ ] Full screen
+- [x] Fix hover issue
+- [x] Full screen
 - [ ] Add loading animation
 - [ ] Add timeline bio
 - [ ] Fix tools and skills
 - [ ] Fix projects
 - [ ] Fix icons fonts 
+- [ ] Port to React
+- [ ] Use tailwind
