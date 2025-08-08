@@ -9,7 +9,6 @@
 - [x] Make scroll navigation in phone
 - [x] Fix projects in phone
 - [x] Fix hover issue
-- [x] Full screen
 - [ ] Add loading animation
 - [ ] Add timeline bio
 - [ ] Fix tools and skills
@@ -17,3 +16,4 @@
 - [ ] Fix icons fonts 
 - [ ] Port to React
 - [ ] Use tailwind
+- [ ] Add a button to ask for full screen
