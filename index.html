@@ -9,104 +9,128 @@
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/cursor.css" />
     <link rel="stylesheet" href="css/orientation.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon/favicon-16x16.png" />
+    <link rel="stylesheet" href="css/loader.css" />
+    <link rel="stylesheet" href="css/glitch.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/favicon/favicon-16x16.png"
+    />
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
   </head>
 
   <body>
-    <div class="landscape-warning">
-      <p>Please switch to portrait mode</p>
-      <p>for the best experience</p>
-    </div>
     <div class="cursor"></div>
-    <div class="noisecont"></div>
-    <header>
-      <div class="hey"></div>
-      <div class="instructions">
-        <pre
-          class="bold rosewater"
-          data-tooltip="Use arrow_keys/hjkl or mouse to navigate"
-        >
+    <div id="loading-screen">
+      <div class="loader"></div>
+      <h1 class="glitch" data-text="Loading">Loading</h1>
+    </div>
+    <div id="main-content" style="display: none">
+      <div class="noisecont"></div>
+      <div class="landscape-warning">
+        <p>Please switch to portrait mode</p>
+        <p>for the best experience</p>
+      </div>
+      <header>
+        <div class="hey"></div>
+        <div class="instructions">
+          <pre
+            class="bold rosewater"
+            data-tooltip="Use arrow_keys/hjkl or mouse to navigate"
+          >
      <i class="nf nf-fa-arrow_up_long upkey"></i>
      <span class="upkey">k</span>
 <i class="nf nf-fa-arrow_left_long leftkey"></i> <span class="leftkey">h</span>   <span class="rightkey">l</span> <i class="nf nf-fa-arrow_right_long rightkey"></i>
     <span class="downkey">j</span>
     <i class="nf nf-fa-arrow_down_long downkey"></i>
         </pre>
-      </div>
-    </header>
-    <main>
-      <div class="left">
-        <nav>
-          /
-          <ul>
-            <li class="hover file" id="about_me">
-              <i class="nf nf-fa-circle_info"></i> about_me
-            </li>
-            <li class="hover directory" id="hobbies/">
-              <i class="nf nf-fa-music"></i> hobbies/
-            </li>
-            <li class="hover file" id="skills">
-              <i class="nf nf-fa-code"></i> skills
-            </li>
-            <li class="hover directory" id="projects/">
-              <i class="nf nf-cod-project"></i> projects/
-            </li>
-            <li class="hover directory" id="get_in_touch/">
-              <i class="nf nf-md-contacts"></i> get_in_touch/
-            </li>
-            <li class="hover file" id="credits">
-              <i class="nf nf-fa-face_smile"></i> credits
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="right">
-        <div class="terminal">
-          <div class="prompt"></div>
-          <div class="content"></div>
+        </div>
+      </header>
+      <main>
+        <div class="left">
+          <nav>
+            /
+            <ul>
+              <li class="hover file" id="about_me">
+                <i class="nf nf-fa-circle_info"></i> about_me
+              </li>
+              <li class="hover directory" id="hobbies/">
+                <i class="nf nf-fa-music"></i> hobbies/
+              </li>
+              <li class="hover file" id="skills">
+                <i class="nf nf-fa-code"></i> skills
+              </li>
+              <li class="hover directory" id="projects/">
+                <i class="nf nf-cod-project"></i> projects/
+              </li>
+              <li class="hover directory" id="get_in_touch/">
+                <i class="nf nf-md-contacts"></i> get_in_touch/
+              </li>
+              <li class="hover file" id="credits">
+                <i class="nf nf-fa-face_smile"></i> credits
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="right">
+          <div class="terminal">
+            <div class="prompt"></div>
+            <div class="content"></div>
+          </div>
+        </div>
+      </main>
+      <div class="mobilenav">
+        <div class="nav">
+          <div class="carleftarr">&lt;</div>
+          <div class="carousel-viewport">
+            <ul class="carousel">
+              <li class="mobhigh file" id="about_me">
+                <i class="nf nf-fa-circle_info"></i> about_me
+              </li>
+              <li class="mobhigh directory" id="hobbies/">
+                <i class="nf nf-fa-music"></i> hobbies/
+              </li>
+              <li class="mobhigh file" id="skills">
+                <i class="nf nf-fa-code"></i> skills
+              </li>
+              <li class="mobhigh directory" id="projects/">
+                <i class="nf nf-cod-project"></i> projects/
+              </li>
+              <li class="mobhigh directory" id="get_in_touch/">
+                <i class="nf nf-md-contacts"></i> get_in_touch/
+              </li>
+              <li class="mobhigh file" id="credits">
+                <i class="nf nf-fa-face_smile"></i> credits
+              </li>
+            </ul>
+          </div>
+          <div class="carrightarr">&gt;</div>
         </div>
       </div>
-    </main>
-    <div class="mobilenav">
-      <div class="nav">
-        <div class="carleftarr">&lt;</div>
-        <div class="carousel-viewport">
-          <ul class="carousel">
-            <li class="mobhigh file" id="about_me">
-              <i class="nf nf-fa-circle_info"></i> about_me
-            </li>
-            <li class="mobhigh directory" id="hobbies/">
-              <i class="nf nf-fa-music"></i> hobbies/
-            </li>
-            <li class="mobhigh file" id="skills">
-              <i class="nf nf-fa-code"></i> skills
-            </li>
-            <li class="mobhigh directory" id="projects/">
-              <i class="nf nf-cod-project"></i> projects/
-            </li>
-            <li class="mobhigh directory" id="get_in_touch/">
-              <i class="nf nf-md-contacts"></i> get_in_touch/
-            </li>
-            <li class="mobhigh file" id="credits">
-              <i class="nf nf-fa-face_smile"></i> credits
-            </li>
-          </ul>
+      <footer>
+        <span class="yellow">--VISITING--</span>
+        <div>
+          <span class="white">-rwxr--r--</span>
+          <span class="white">/about_me</span>
         </div>
-        <div class="carrightarr">&gt;</div>
-      </div>
+      </footer>
+      <script src="scripts/main.js"></script>
+      <script src="scripts/cursor.js"></script>
+      <script src="scripts/swipe.js"></script>
     </div>
-    <footer>
-      <span class="yellow">--VISITING--</span>
-      <div>
-        <span class="white">-rwxr--r--</span>
-        <span class="white">/about_me</span>
-      </div>
-    </footer>
-    <script src="scripts/main.js"></script>
-    <script src="scripts/cursor.js"></script>
-    <script src="scripts/swipe.js"></script>
+    <!-- end main-content -->
+    <script src="scripts/preload.js"></script>
   </body>
 </html>

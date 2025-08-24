@@ -1,0 +1,67 @@
+/* HTML: <div class="loader"></div> */
+#loading-screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--violet);
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  display: inline-grid;
+  width: 170px;
+  aspect-ratio: 1;
+  clip-path: polygon(
+    100% 50%,
+    85.36% 85.36%,
+    50% 100%,
+    14.64% 85.36%,
+    0% 50%,
+    14.64% 14.64%,
+    50% 0%,
+    85.36% 14.64%
+  );
+  background: var(--lavender);
+  animation: l2 6s infinite linear;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1;
+  background: var(--dark-violet);
+  clip-path: polygon(
+    100% 50%,
+    81.17% 89.09%,
+    38.87% 98.75%,
+    4.95% 71.69%,
+    4.95% 28.31%,
+    38.87% 1.25%,
+    81.17% 10.91%
+  );
+  margin: 10%;
+  animation: inherit;
+  animation-duration: 8s;
+}
+.loader:after {
+  background: var(--blue);
+  clip-path: polygon(
+    100% 50%,
+    75% 93.3%,
+    25% 93.3%,
+    0% 50%,
+    25% 6.7%,
+    75% 6.7%
+  );
+  margin: 20%;
+  animation-duration: 2s;
+  animation-direction: reverse;
+}
+@keyframes l2 {
+  to {
+    rotate: 1turn;
+  }
+}

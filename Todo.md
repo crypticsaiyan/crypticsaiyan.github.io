@@ -18,3 +18,4 @@
 - [ ] Use tailwind
 - [ ] Add a button to ask for full screen
 - [ ] Do fixes
+- [ ] Host fonts locally
