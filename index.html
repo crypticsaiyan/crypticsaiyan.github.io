@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/orientation.css" />
     <link rel="stylesheet" href="css/loader.css" />
     <link rel="stylesheet" href="css/glitch.css" />
+    <link rel="stylesheet" href="css/fullscreen.css" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -37,13 +38,19 @@
       <div class="loader"></div>
       <h1 class="glitch" data-text="Loading">Loading</h1>
     </div>
+    <div id="fullscreen-overlay">
+      <div id="fullscreen-btn">
+        <span class="glitch" data-text="Enter!">Enter!</span>
+      </div>
+    </div>
+    <div class="noisecont"></div>
     <div id="main-content" style="display: none">
-      <div class="noisecont"></div>
       <div class="landscape-warning">
         <p>Please switch to portrait mode</p>
         <p>for the best experience</p>
       </div>
       <header>
+        <!-- Go Fullscreen button moved to overlay -->
         <div class="hey"></div>
         <div class="instructions">
           <pre
@@ -132,5 +139,6 @@
     </div>
     <!-- end main-content -->
     <script src="scripts/preload.js"></script>
+    <!-- goFullscreen logic moved to preload.js -->
   </body>
 </html>

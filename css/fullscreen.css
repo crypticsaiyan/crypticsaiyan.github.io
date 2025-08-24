@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
+
+#fullscreen-overlay {
+  display: none;
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* background: var(--violet); */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#fullscreen-btn {
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: "Pixelify Sans";
+  padding: 1em 1.5em;
+  cursor: pointer;
+  border: 5px solid var(--lavender);
+  font-weight: 500;
+  color: var(--dark-violet);
+  background-color: var(--violet);
+}
