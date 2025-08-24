@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Website</title>
+    <!-- Preload fonts for better performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Use Font Awesome instead of heavy Nerd Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/colorPallete.css" />
     <link rel="stylesheet" href="css/common.css" />
@@ -39,12 +46,13 @@
       <h1 class="glitch" data-text="Loading">Loading</h1>
     </div>
     <div id="fullscreen-overlay">
+      <div class="noisecont"></div>
       <div id="fullscreen-btn">
         <span class="glitch" data-text="Enter!">Enter!</span>
       </div>
     </div>
-    <div class="noisecont"></div>
     <div id="main-content" style="display: none">
+      <div class="noisecont"></div>
       <div class="landscape-warning">
         <p>Please switch to portrait mode</p>
         <p>for the best experience</p>
@@ -57,11 +65,11 @@
             class="bold rosewater"
             data-tooltip="Use arrow_keys/hjkl or mouse to navigate"
           >
-     <i class="nf nf-fa-arrow_up_long upkey"></i>
+     <i class="fas fa-arrow-up upkey"></i>
      <span class="upkey">k</span>
-<i class="nf nf-fa-arrow_left_long leftkey"></i> <span class="leftkey">h</span>   <span class="rightkey">l</span> <i class="nf nf-fa-arrow_right_long rightkey"></i>
+<i class="fas fa-arrow-left leftkey"></i> <span class="leftkey">h</span>   <span class="rightkey">l</span> <i class="fas fa-arrow-right rightkey"></i>
     <span class="downkey">j</span>
-    <i class="nf nf-fa-arrow_down_long downkey"></i>
+    <i class="fas fa-arrow-down downkey"></i>
         </pre>
         </div>
       </header>
@@ -71,22 +79,22 @@
             /
             <ul>
               <li class="hover file" id="about_me">
-                <i class="nf nf-fa-circle_info"></i> about_me
+                <i class="fas fa-info-circle"></i> about_me
               </li>
               <li class="hover directory" id="hobbies/">
-                <i class="nf nf-fa-music"></i> hobbies/
+                <i class="fas fa-music"></i> hobbies/
               </li>
               <li class="hover file" id="skills">
-                <i class="nf nf-fa-code"></i> skills
+                <i class="fas fa-code"></i> skills
               </li>
               <li class="hover directory" id="projects/">
-                <i class="nf nf-cod-project"></i> projects/
+                <i class="fas fa-folder-open"></i> projects/
               </li>
               <li class="hover directory" id="get_in_touch/">
-                <i class="nf nf-md-contacts"></i> get_in_touch/
+                <i class="fas fa-address-book"></i> get_in_touch/
               </li>
               <li class="hover file" id="credits">
-                <i class="nf nf-fa-face_smile"></i> credits
+                <i class="fas fa-smile"></i> credits
               </li>
             </ul>
           </nav>
@@ -103,23 +111,23 @@
           <div class="carleftarr">&lt;</div>
           <div class="carousel-viewport">
             <ul class="carousel">
-              <li class="mobhigh file" id="about_me">
-                <i class="nf nf-fa-circle_info"></i> about_me
+              <li class="mobhigh file" id="about_me_mobile">
+                <i class="fas fa-info-circle"></i> about_me
               </li>
-              <li class="mobhigh directory" id="hobbies/">
-                <i class="nf nf-fa-music"></i> hobbies/
+              <li class="mobhigh directory" id="hobbies_mobile">
+                <i class="fas fa-music"></i> hobbies/
               </li>
-              <li class="mobhigh file" id="skills">
-                <i class="nf nf-fa-code"></i> skills
+              <li class="mobhigh file" id="skills_mobile">
+                <i class="fas fa-code"></i> skills
               </li>
-              <li class="mobhigh directory" id="projects/">
-                <i class="nf nf-cod-project"></i> projects/
+              <li class="mobhigh directory" id="projects_mobile">
+                <i class="fas fa-folder-open"></i> projects/
               </li>
-              <li class="mobhigh directory" id="get_in_touch/">
-                <i class="nf nf-md-contacts"></i> get_in_touch/
+              <li class="mobhigh directory" id="get_in_touch_mobile">
+                <i class="fas fa-address-book"></i> get_in_touch/
               </li>
-              <li class="mobhigh file" id="credits">
-                <i class="nf nf-fa-face_smile"></i> credits
+              <li class="mobhigh file" id="credits_mobile">
+                <i class="fas fa-smile"></i> credits
               </li>
             </ul>
           </div>

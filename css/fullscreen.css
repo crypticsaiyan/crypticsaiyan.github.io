@@ -16,6 +16,7 @@
 
 #fullscreen-btn {
   font-size: 2rem;
+  z-index: 99;
   text-transform: uppercase;
   font-family: "Pixelify Sans";
   padding: 1em 1.5em;

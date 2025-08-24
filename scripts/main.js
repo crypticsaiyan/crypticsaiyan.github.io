@@ -159,28 +159,27 @@ function updateTerminal(id) {
             into tech, you'll probably find me reading a good book or immersed
             in a great game.</br>${
               mediaQuery3.matches ? "" : "<br>"
-            } Oh, and yes — I use
-            <i class="nf nf-md-arch"></i> btw.<br>${
+            }<i>(I use
+            Arch btw)</i><br>${
               mediaQuery3.matches ? "" : "<br>"
-            }<a href="" class="aboutmelink"><i class="nf nf-md-download"></i> Download my resume</a>
+            }<a href="" class="aboutmelink"><i class="fas fa-download"></i> Download my resume</a>
     `;
   } else if (id == "skills") {
     // Improved skills section: more structured, easier to extend, DRY
     const skills = {
       Languages: [
-        { name: "HTML", color: "orange", icon: "nf nf-dev-html5" },
-        { name: "CSS", color: "blue", icon: "nf nf-dev-css3" },
-        { name: "JS", color: "yellow", icon: "nf nf-fa-js" },
-        { name: "C", color: "blue", icon: "nf nf-custom-c" },
-        { name: "C++", color: "sapphire", icon: "nf nf-custom-cpp" },
-        { name: "Python", color: "green", icon: "nf nf-dev-python" },
+        { name: "HTML", color: "orange", icon: "fab fa-html5" },
+        { name: "CSS", color: "blue", icon: "fab fa-css3-alt" },
+        { name: "JS", color: "yellow", icon: "fab fa-js-square" },
+        { name: "C", color: "blue", icon: "fas fa-c" },
+        { name: "C++", color: "sapphire", icon: "fas fa-code" },
+        { name: "Python", color: "green", icon: "fab fa-python" },
       ],
       Tools: [
-        { name: "Linux", color: "black", icon: "nf nf-dev-linux" },
-        { name: "Git", color: "red", icon: "nf nf-dev-git" },
-        { name: "GitHub", color: "mauve", icon: "nf nf-cod-github" },
-        { name: "Neovim", color: "green", icon: "nf nf-custom-neovim" },
-        { name: "Arch", color: "white", icon: "nf nf-md-arch" },
+        { name: "Linux", color: "black", icon: "fab fa-linux" },
+        { name: "Git", color: "red", icon: "fab fa-git-alt" },
+        { name: "GitHub", color: "mauve", icon: "fab fa-github" },
+        { name: "Neovim", color: "green", icon: "fas fa-terminal" },
       ],
     };
 
@@ -262,28 +261,28 @@ function updateTerminal(id) {
         "Github",
         "mauve",
         "https://www.github.com/crypticsaiyan",
-        "nf-cod-github",
+        "fab fa-github",
         "@crypticsaiyan",
       ],
       discord: [
         "Discord",
         "lavender",
         "https://www.discord.com/users/uisupersaiyan3",
-        "nf-fa-discord",
+        "fab fa-discord",
         "@uisupersaiyan3",
       ],
       email: [
         "Email",
         "red",
         "mailto:crypticsaiyan@proton.me",
-        "nf-md-email_outline",
+        "fas fa-envelope",
         "crypticsaiyan@proton.me",
       ],
       linkedin: [
         "LinkedIn",
         "blue",
         "https://www.linkedin.com/in/rahul-joshi-059a882a7/",
-        "nf-dev-linkedin",
+        "fab fa-linkedin",
         "Rahul Joshi",
       ],
     };
@@ -295,7 +294,7 @@ function updateTerminal(id) {
       card.href = contactlist[i][2];
       card.target = "_blank";
       card.innerHTML = `
-                <i class="nf ${contactlist[i][3]}"></i>
+                <i class="${contactlist[i][3]}"></i>
                 <div class="details">
                   <div class="site">${contactlist[i][0]}</div>
                   <div class="userid">${contactlist[i][4]}</div>
@@ -309,7 +308,7 @@ function updateTerminal(id) {
     <div class="credits">
             <div style="white-space: pre;">
   _______________________________________
- < Made with lots of <span class="red nf nf-cod-heart"></span> by CryptoSaiyan >
+ < Made with lots of <span class="red fas fa-heart"></span> by CryptoSaiyan >
   ---------------------------------------
          \\   ^__^
           \\  (oo)\\_______
@@ -319,7 +318,7 @@ function updateTerminal(id) {
             </div>
             <div class="used">
               <div>
-              <div class="bold">icons:</div><a href="https://www.nerdfonts.com" target="_blank">nerdfont icons</a>
+              <div class="bold">icons:</div><a href="https://fontawesome.com" target="_blank"><i class="fa-solid fa-font-awesome"></i> &nbsp;<span>font awesome</span></a>
               </div>
               <div>
               <div class="bold">theme:</div><a href="https://catppuccin.com/" target="_blank"><img src="/assets/images/catppuccin-logo.png" width="40" height="40" alt="catppuccin-logo">&nbsp;<div class = "mauve">catppuccin mocha</div></a>
@@ -333,7 +332,7 @@ function updateTerminal(id) {
             <div style="white-space: pre;">
   ____________________
  < Made with lots of 
-   <span class="red nf nf-cod-heart"></span> by CryptoSaiyan >
+   <span class="red fas fa-heart"></span> by CryptoSaiyan >
   --------------------
          \\   ^__^
           \\  (oo)\\_______
@@ -343,7 +342,7 @@ function updateTerminal(id) {
             </div>
             <div class="used">
               <div>
-              <div class="bold">icons:</div><a href="https://www.nerdfonts.com" target="_blank">nerdfont icons</a>
+              <div class="bold">icons:</div><a href="https://fontawesome.com" target="_blank">font awesome icons</a>
               </div>
               <div>
               <div class="bold">theme:</div><a href="https://catppuccin.com/" target="_blank"><img src="/assets/images/catppuccin-logo.png" width="40" height="40" alt="catppuccin-logo">&nbsp;<div class = "mauve">catppuccin mocha</div></a>
