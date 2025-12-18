@@ -114,15 +114,69 @@ const mappings = {
 const projects = {
   mindmeld: [
     "MindMeld",
-    "/assets/images/mindmeld.png",
+    "/assets/images/projects/mindmeld.png",
     "https://crypticsaiyan.github.io/Performance-Tracker/",
     "Test your cognitive skills through fun games!",
   ],
   spyware: [
     "SpyWare",
-    "/assets/images/malware.png",
+    "/assets/images/projects/malware.png",
     "https://github.com/crypticsaiyan/wocProject",
-    "A spyware which uses python sockets for connections.",
+    "A spyware which uses python sockets for connections",
+  ],
+  visusort: [
+    "VisuSort",
+    "/assets/images/projects/visusort.png",
+    "https://github.com/crypticsaiyan/visusort",
+    "A terminal-based interactive sorting algorithm visualizer written in C++",
+  ],
+  globseo: [
+    "globSEO",
+    "/assets/images/projects/globseo.png",
+    "https://github.com/crypticsaiyan/GlobSEO",
+    "Generate multilingual metadata for your website in seconds!",
+  ],
+  infoundry: [
+    "InFoundry",
+    "/assets/images/projects/infoundry.png",
+    "https://github.com/crypticsaiyan/infoundry",
+    "Generate Infrasturucture as Code for your repo",
+  ],
+  minesafe: [
+    "MineSafe",
+    "/assets/images/projects/minesafe.png",
+    "https://github.com/crypticsaiyan/minesafe",
+    "AI-Powered Mining Safety Intelligence Platform",
+  ],
+  nasa: [
+    "Exo-huhh",
+    "/assets/images/projects/nasa.png",
+    "https://github.com/armoredvortex/nasa-space-apps/",
+    "Classify and analyze exoplanets using AI",
+  ],
+    startpage: [
+    "Browser Startpage",
+    "/assets/images/projects/startpage.png",
+    "https://github.com/crypticsaiyan/startpage",
+    "Minimal browser startpage",
+  ],
+  phosphor: [
+    "PhosPhor",
+    "/assets/images/projects/phosphor.png",
+    "https://github.com/crypticsaiyan/phosphor",
+    "IRC client in terminal! Go back to the 90s!",
+  ],
+  xkcd: [
+    "xkcd userscript",
+    "/assets/images/projects/xkcd.png",
+    "https://github.com/crypticsaiyan/xkcd_userscript",
+    "Experience xkcd in dark mode!",
+  ],
+  digitrush: [
+    "DigitRush",
+    "/assets/images/projects/digitrush.png",
+    "https://github.com/crypticsaiyan/digitrush",
+    "Solve mental math puzzles right inside Reddit!",
   ],
 };
 
@@ -157,9 +211,7 @@ function updateTerminal(id) {
               mediaQuery2.matches ? "" : "<br>"
             } When I'm not coding or diving
             into tech, you'll probably find me reading a good book or immersed
-            in a great game.</br>${
-              mediaQuery3.matches ? "" : "<br>"
-            }<i>(I use
+            in a great game.</br>${mediaQuery3.matches ? "" : "<br>"}<i>(I use
             Arch btw)</i><br>${
               mediaQuery3.matches ? "" : "<br>"
             }<a href="" class="aboutmelink"><i class="fas fa-download"></i> Download my resume</a>
