@@ -274,10 +274,16 @@ nav ul li i {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #d3c2c099 transparent;
+}
+
+/* Center child content when it fits, scroll from top when it overflows */
+.content > * {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .content::-webkit-scrollbar {
@@ -470,9 +476,9 @@ nav ul li i {
 }
 
 .content .credits {
-  display: flex;
-  flex-direction: column;
-  margin-top: -50px;
+  display: block;
+  width: 100%;
+  overflow: visible;
 }
 
 .content .credits .used {
@@ -737,7 +743,7 @@ footer div > span {
   }
 
   .content .credits {
-    margin-top: -10px;
+    margin-top: 0;
   }
 
   .content .contact > a {
@@ -745,7 +751,8 @@ footer div > span {
   }
 
   .content .credits > div:first-child {
-    margin-left: -20px;
+    margin-left: 0;
+    font-size: 1rem; /* Reduce font size on mobile to fit the cow better */
   }
   .content .credits .used {
     flex-direction: column;
@@ -829,7 +836,8 @@ footer div > span {
 }
 @media (max-width: 380px) {
   .content .credits > div:first-child {
-    margin-left: -35px;
+    margin-left: 0;
+    font-size: 0.9rem;
   }
   :root {
     --normal: 1.05rem;
@@ -873,7 +881,7 @@ footer div > span {
     height: 60px;
   }
   .content .credits {
-    margin-top: -63px;
+    margin-top: 0;
   }
 }
 @media (max-height: 725px) and (orientation: portrait) {
