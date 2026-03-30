@@ -2,6 +2,16 @@
   display: none;
 }
 
+::selection {
+  background-color: var(--mauve);
+  color: var(--dark-violet);
+}
+
+::-moz-selection {
+  background-color: var(--mauve);
+  color: var(--dark-violet);
+}
+
 .bold {
   font-weight: 800;
 }

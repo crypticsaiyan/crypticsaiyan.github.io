@@ -41,6 +41,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainContent = document.getElementById("main-content");
   const fullscreenOverlay = document.getElementById("fullscreen-overlay");
   const fullscreenBtn = document.getElementById("fullscreen-btn");
+
+  function enterSite() {
+    if (fullscreenOverlay.style.display === "none") return;
+    // Fullscreen logic
+    if (document.documentElement.requestFullscreen) {
+      document.documentElement.requestFullscreen();
+    } else if (document.documentElement.webkitRequestFullscreen) {
+      document.documentElement.webkitRequestFullscreen();
+    } else if (document.documentElement.msRequestFullscreen) {
+      document.documentElement.msRequestFullscreen();
+    }
+    fullscreenOverlay.style.display = "none";
+    mainContent.style.display = "";
+  }
+
   preloadImages(imagePaths, () => {
     loadingScreen.style.display = "none";
     fullscreenOverlay.style.display = "flex";
@@ -48,17 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   if (fullscreenBtn) {
-    fullscreenBtn.onclick = function () {
-      // Fullscreen logic
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen();
-      } else if (document.documentElement.msRequestFullscreen) {
-        document.documentElement.msRequestFullscreen();
-      }
-      fullscreenOverlay.style.display = "none";
-      mainContent.style.display = "";
-    };
+    fullscreenBtn.onclick = enterSite;
   }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && fullscreenOverlay.style.display === "flex") {
+      event.preventDefault();
+      enterSite();
+    }
+  });
 });

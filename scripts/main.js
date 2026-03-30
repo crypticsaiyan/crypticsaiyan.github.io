@@ -219,25 +219,39 @@ function updateTerminal(id) {
         in a great game.</br>${mediaQuery3.matches ? "" : "<br>"}<i>(I use
         Arch btw)</i><br>${
           mediaQuery3.matches ? "" : "<br>"
-        }<a href="" class="aboutmelink"><i class="fas fa-download"></i> Download my resume</a>
+        }<a href="https://drive.google.com/drive/folders/1tlwvukcALbV46JwYUYKEDPK1bbPmnIN2?usp=drive_link" class="aboutmelink" target="_blank" rel="noopener noreferrer"><i class="fas fa-download"></i> Download my resume</a>
       </div>
     `;
   } else if (id == "skills") {
-    // Improved skills section: more structured, easier to extend, DRY
     const skills = {
       Languages: [
-        { name: "HTML", color: "orange", icon: "fab fa-html5" },
-        { name: "CSS", color: "blue", icon: "fab fa-css3-alt" },
-        { name: "JS", color: "yellow", icon: "fab fa-js-square" },
-        { name: "C", color: "blue", icon: "fas fa-c" },
-        { name: "C++", color: "sapphire", icon: "fas fa-code" },
-        { name: "Python", color: "green", icon: "fab fa-python" },
+        { name: "C",   color: "sapphire", icon: "fas fa-c" },
+        { name: "C++", color: "blue",     icon: "fas fa-code" },
+        { name: "Py",  color: "green",    icon: "fab fa-python" },
+        { name: "JS",  color: "yellow",   icon: "fab fa-js-square" },
+        { name: "TS",  color: "teal",     icon: "fab fa-js" },
       ],
-      Tools: [
-        { name: "Linux", color: "black", icon: "fab fa-linux" },
-        { name: "Git", color: "red", icon: "fab fa-git-alt" },
-        { name: "GitHub", color: "mauve", icon: "fab fa-github" },
-        { name: "Neovim", color: "green", icon: "fas fa-terminal" },
+      "Frameworks / Libraries": [
+        { name: "React",    color: "sky",    icon: "fab fa-react" },
+        { name: "Next.js",  color: "white",  icon: "fas fa-n" },
+        { name: "Node.js",  color: "green",  icon: "fab fa-node-js" },
+        { name: "Express",  color: "mauve",  icon: "fas fa-server" },
+        { name: "Tailwind", color: "teal",   icon: "fab fa-css3" },
+        { name: "Redis",    color: "red",    icon: "fas fa-database" },
+        { name: "WS",       color: "orange", icon: "fas fa-plug" },
+      ],
+      "Tools / DevOps": [
+        { name: "Linux",   color: "rosewater", icon: "fab fa-linux" },
+        { name: "Git",     color: "red",       icon: "fab fa-git-alt" },
+        { name: "GitHub",  color: "mauve",     icon: "fab fa-github" },
+        { name: "MCP",     color: "lavender",  icon: "fas fa-robot" },
+        { name: "Postman", color: "orange",    icon: "fas fa-paper-plane" },
+        { name: "NeoVim",  color: "green",     icon: "fas fa-terminal" },
+        { name: "Tmux",    color: "pink",      icon: "fas fa-table-cells-large" },
+      ],
+      "CS Fundamentals": [
+        { name: "DSA", color: "yellow", icon: "fas fa-diagram-project" },
+        { name: "OOP", color: "mauve",  icon: "fas fa-cubes" },
       ],
     };
 
@@ -259,8 +273,10 @@ function updateTerminal(id) {
 
     terminal.lastElementChild.innerHTML = `
       <div class="skills">
-      ${renderSkillGroup("Languages", skills.Languages, "lang")}
-      ${renderSkillGroup("Tools", skills.Tools, "tools")}
+      ${renderSkillGroup("Languages", skills["Languages"], "lang")}
+      ${renderSkillGroup("Frameworks / Libraries", skills["Frameworks / Libraries"], "lang")}
+      ${renderSkillGroup("Tools / DevOps", skills["Tools / DevOps"], "tools")}
+      ${renderSkillGroup("CS Fundamentals", skills["CS Fundamentals"], "tools")}
       </div>
     `;
   } else if (id == "hobbies/") {

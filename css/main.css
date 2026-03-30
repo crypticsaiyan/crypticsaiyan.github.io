@@ -239,7 +239,7 @@ nav ul li i {
 
 .terminal {
   width: 75%;
-  min-height: 75%;
+  height: 75%;
   border: 3px solid #f2d5cfff;
   background-color: var(--darkest);
   /* border: 3px solid transparent;
@@ -276,6 +276,25 @@ nav ul li i {
   flex-direction: column;
   justify-content: center;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d3c2c099 transparent;
+}
+
+.content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgba(203, 166, 247, 0.25);
+  border-radius: 10px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgba(180, 190, 254, 0.45);
 }
 
 .aboutmelink {
@@ -510,7 +529,7 @@ footer div > span {
   .terminal {
     width: 85%;
     padding: 30px;
-    min-height: 75%;
+    height: 75%;
   }
   :root {
     --normal: 1.2rem;
@@ -540,9 +559,8 @@ footer div > span {
 @media (max-width: 1250px) {
   .content {
     padding: 0px;
-    /* disable desktop centering on smaller screens */
     justify-content: flex-start;
-    overflow-y: visible;
+    overflow-y: auto;
   }
   :root {
     --normal: 1rem;

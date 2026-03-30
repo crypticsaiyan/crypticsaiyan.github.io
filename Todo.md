@@ -4,7 +4,7 @@
 - [x] Add Gradient to terminal border
 - [x] Add glitch to blinking text
 - [ ] Add animations
-- [ ] Fix text highlighting
+- [x] Fix text highlighting
 - [x] Portrait in phone
 - [x] Make scroll navigation in phone
 - [x] Fix projects in phone
@@ -17,4 +17,4 @@
 - [ ] Port to React
 - [ ] Use tailwind
 - [x] Add a button to ask for full screen
-- [ ] Host fonts locally
+- [ ] Use JetBrains Mono Font glyphs 
