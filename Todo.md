@@ -2,20 +2,19 @@
 - [x] Add Cursor
 - [ ] Pixel Icons
 - [x] Add Gradient to terminal border
-- [ ] Add glitch to blinking text
+- [x] Add glitch to blinking text
 - [ ] Add animations
 - [ ] Fix text highlighting
 - [x] Portrait in phone
 - [x] Make scroll navigation in phone
 - [x] Fix projects in phone
 - [x] Fix hover issue
-- [ ] Add loading animation
+- [x] Add loading animation
 - [ ] Add timeline bio
 - [ ] Fix tools and skills
 - [ ] Fix projects
 - [ ] Fix icons fonts 
 - [ ] Port to React
 - [ ] Use tailwind
-- [ ] Add a button to ask for full screen
-- [ ] Do fixes
+- [x] Add a button to ask for full screen
 - [ ] Host fonts locally

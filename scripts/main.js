@@ -71,33 +71,37 @@ let items = Array.from(document.querySelectorAll(".left ul li"));
 let itemIndex = 0;
 items[0].classList.add("active");
 updateFooter(items[0]);
+function setActiveNavItem(newIndex, shouldUpdateTerminal = true) {
+  if (newIndex < 0 || newIndex >= items.length || newIndex === itemIndex) return;
+  items[itemIndex].classList.remove("active");
+  itemIndex = newIndex;
+  items[itemIndex].classList.add("active");
+  updateFooter(items[itemIndex]);
+  if (shouldUpdateTerminal) {
+    updateTerminal(items[itemIndex].id);
+  }
+}
+
 document.addEventListener("keydown", (KeyboardEvent) => {
   if (KeyboardEvent.key == "ArrowDown" || KeyboardEvent.key == "j") {
     if (itemIndex != items.length - 1) {
-      items[itemIndex].classList.toggle("active");
-      itemIndex++;
-      items[itemIndex].classList.toggle("active");
+      setActiveNavItem(itemIndex + 1);
+      syncMobileCarouselToItem();
     }
   }
   if (KeyboardEvent.key == "ArrowUp" || KeyboardEvent.key == "k") {
     if (itemIndex != 0) {
-      items[itemIndex].classList.toggle("active");
-      itemIndex--;
-      items[itemIndex].classList.toggle("active");
+      setActiveNavItem(itemIndex - 1);
+      syncMobileCarouselToItem();
     }
   }
-  updateFooter(items[itemIndex]);
-  updateTerminal(items[itemIndex].id);
 });
 
 //function to handle clicking in nav
 document.querySelector("ul").addEventListener("click", (event) => {
   if (event.target.tagName == "LI") {
-    items[itemIndex].classList.toggle("active");
-    itemIndex = items.indexOf(event.target);
-    items[itemIndex].classList.toggle("active");
-    updateFooter(items[itemIndex]);
-    updateTerminal(items[itemIndex].id);
+    setActiveNavItem(items.indexOf(event.target));
+    syncMobileCarouselToItem();
   }
 });
 
@@ -206,15 +210,17 @@ function updateTerminal(id) {
   }
   if (id == "about_me") {
     terminal.lastElementChild.innerHTML = `
-                Hi! I'm a CS undergrad @ <a target="_blank" href="https://www.iitism.ac.in/" class="aboutmelink">IIT Dhanbad</a>.
-            I'm passionate about cybersecurity, web development, and everything about computer science :D</br>${
-              mediaQuery2.matches ? "" : "<br>"
-            } When I'm not coding or diving
-            into tech, you'll probably find me reading a good book or immersed
-            in a great game.</br>${mediaQuery3.matches ? "" : "<br>"}<i>(I use
-            Arch btw)</i><br>${
-              mediaQuery3.matches ? "" : "<br>"
-            }<a href="" class="aboutmelink"><i class="fas fa-download"></i> Download my resume</a>
+      <div>
+        Hi! I'm a CS undergrad @ <a target="_blank" href="https://www.iitism.ac.in/" class="aboutmelink">IIT Dhanbad</a>.
+        I'm passionate about web development, low-level systems, and pretty much everything about computer science :D</br>${
+          mediaQuery2.matches ? "" : "<br>"
+        } When I'm not coding or diving
+        into tech, you'll probably find me reading a good book or immersed
+        in a great game.</br>${mediaQuery3.matches ? "" : "<br>"}<i>(I use
+        Arch btw)</i><br>${
+          mediaQuery3.matches ? "" : "<br>"
+        }<a href="" class="aboutmelink"><i class="fas fa-download"></i> Download my resume</a>
+      </div>
     `;
   } else if (id == "skills") {
     // Improved skills section: more structured, easier to extend, DRY
@@ -463,16 +469,6 @@ terminal.addEventListener("click", (event) => {
       }
     }
   }
-  if (event.target.classList.contains("leftarr")) {
-    if (currProjectIndex > 0) {
-      changeProject(--currProjectIndex);
-    }
-  }
-  if (event.target.classList.contains("rightarr")) {
-    if (currProjectIndex < projectkeys.length - 1) {
-      changeProject(++currProjectIndex);
-    }
-  }
 });
 document.addEventListener("keydown", (event) => {
   if (document.getElementById("projects/").classList.contains("active")) {
@@ -534,24 +530,40 @@ function updateCarousel(direction) {
   }
 }
 
+function syncMobileCarouselToItem() {
+  carouselIndex = itemIndex;
+  carouselcont.style.transform = `translateX(-${carouselIndex * 100}%)`;
+  if (carouselIndex === 0) {
+    carleftarrow.style.opacity = "0.4";
+  } else {
+    carleftarrow.style.opacity = "1";
+  }
+  if (carouselIndex === carousellength - 1) {
+    carrightarrow.style.opacity = "0.4";
+  } else {
+    carrightarrow.style.opacity = "1";
+  }
+}
+
 carleftarrow = document.querySelector(".mobilenav .carleftarr");
 carleftarrow.style.opacity = "0.4";
 carrightarrow = document.querySelector(".mobilenav .carrightarr");
 carleftarrow.addEventListener("click", () => {
   if (carouselIndex > 0) {
     updateCarousel("prev");
-    updateTerminal(items[carouselIndex].id);
+    setActiveNavItem(carouselIndex);
   }
 });
 carrightarrow.addEventListener("click", () => {
   if (carouselIndex < carousellength - 1) {
     updateCarousel("next");
-    updateTerminal(items[carouselIndex].id);
+    setActiveNavItem(carouselIndex);
   }
 });
 
 function main() {
   updateTerminal("about_me");
+  syncMobileCarouselToItem();
 }
 
 main();
