@@ -1,24 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Website</title>
-    <!-- Preload fonts for better performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <!-- Use Font Awesome instead of heavy Nerd Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/colorPallete.css" />
-    <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/cursor.css" />
-    <link rel="stylesheet" href="css/orientation.css" />
-    <link rel="stylesheet" href="css/loader.css" />
-    <link rel="stylesheet" href="css/glitch.css" />
-    <link rel="stylesheet" href="css/fullscreen.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -38,115 +37,8 @@
     />
     <link rel="manifest" href="/assets/favicon/site.webmanifest" />
   </head>
-
   <body>
-    <div class="cursor"></div>
-    <div id="loading-screen">
-      <div class="loader"></div>
-      <h1 class="glitch" data-text="Loading">Loading</h1>
-    </div>
-    <div id="fullscreen-overlay">
-      <div class="noisecont"></div>
-      <div id="fullscreen-btn">
-        <span class="glitch" data-text="Enter!">Enter!</span>
-      </div>
-    </div>
-    <div id="main-content" style="display: none">
-      <div class="noisecont"></div>
-      <div class="landscape-warning">
-        <p>Please switch to portrait mode</p>
-        <p>for the best experience</p>
-      </div>
-      <header>
-        <!-- Go Fullscreen button moved to overlay -->
-        <div class="hey"></div>
-        <div class="instructions">
-          <pre
-            class="bold rosewater"
-            data-tooltip="Use arrow_keys/hjkl or mouse to navigate"
-          >
-     <i class="fas fa-arrow-up upkey"></i>
-     <span class="upkey">k</span>
-<i class="fas fa-arrow-left leftkey"></i> <span class="leftkey">h</span>   <span class="rightkey">l</span> <i class="fas fa-arrow-right rightkey"></i>
-    <span class="downkey">j</span>
-    <i class="fas fa-arrow-down downkey"></i>
-        </pre>
-        </div>
-      </header>
-      <main>
-        <div class="left">
-          <nav>
-            /
-            <ul>
-              <li class="hover file" id="about_me">
-                <i class="fas fa-info-circle"></i> about_me
-              </li>
-              <li class="hover directory" id="hobbies/">
-                <i class="fas fa-music"></i> hobbies/
-              </li>
-              <li class="hover file" id="skills">
-                <i class="fas fa-code"></i> skills
-              </li>
-              <li class="hover directory" id="projects/">
-                <i class="fas fa-folder-open"></i> projects/
-              </li>
-              <li class="hover directory" id="get_in_touch/">
-                <i class="fas fa-address-book"></i> get_in_touch/
-              </li>
-              <li class="hover file" id="credits">
-                <i class="fas fa-smile"></i> credits
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="right">
-          <div class="terminal">
-            <div class="prompt"></div>
-            <div class="content"></div>
-          </div>
-        </div>
-      </main>
-      <div class="mobilenav">
-        <div class="nav">
-          <div class="carleftarr">&lt;</div>
-          <div class="carousel-viewport">
-            <ul class="carousel">
-              <li class="mobhigh file" id="about_me_mobile">
-                <i class="fas fa-info-circle"></i> about_me
-              </li>
-              <li class="mobhigh directory" id="hobbies_mobile">
-                <i class="fas fa-music"></i> hobbies/
-              </li>
-              <li class="mobhigh file" id="skills_mobile">
-                <i class="fas fa-code"></i> skills
-              </li>
-              <li class="mobhigh directory" id="projects_mobile">
-                <i class="fas fa-folder-open"></i> projects/
-              </li>
-              <li class="mobhigh directory" id="get_in_touch_mobile">
-                <i class="fas fa-address-book"></i> get_in_touch/
-              </li>
-              <li class="mobhigh file" id="credits_mobile">
-                <i class="fas fa-smile"></i> credits
-              </li>
-            </ul>
-          </div>
-          <div class="carrightarr">&gt;</div>
-        </div>
-      </div>
-      <footer>
-        <span class="yellow">--VISITING--</span>
-        <div>
-          <span class="white">-rwxr--r--</span>
-          <span class="white">/about_me</span>
-        </div>
-      </footer>
-      <script src="scripts/main.js"></script>
-      <script src="scripts/cursor.js"></script>
-      <script src="scripts/swipe.js"></script>
-    </div>
-    <!-- end main-content -->
-    <script src="scripts/preload.js"></script>
-    <!-- goFullscreen logic moved to preload.js -->
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
