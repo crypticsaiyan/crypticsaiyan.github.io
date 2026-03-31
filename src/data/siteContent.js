@@ -174,7 +174,7 @@ export const projects = [
     name: 'InFoundry',
     image: '/assets/images/projects/infoundry.webp',
     href: 'https://github.com/crypticsaiyan/infoundry',
-    description: 'Generate Infrasturucture as Code for your repo',
+    description: 'Generate Infrasturucture as Code for your repo!',
   },
   {
     id: 'globseo',
@@ -203,7 +203,7 @@ export const projects = [
     image: '/assets/images/projects/visusort.webp',
     href: 'https://github.com/crypticsaiyan/visusort',
     description:
-      'A TUI sorting algorithm visualizer written in C++',
+      'A TUI sorting algorithm visualizer written in C++!',
   },
   {
     id: 'geopulse',
@@ -217,7 +217,7 @@ export const projects = [
     name: 'GitHub Wrapped',
     image: '/assets/images/projects/githubwrapped.webp',
     href: 'https://github.com/crypticsaiyan/githubwrapped',
-    description: 'Spotify Wrapped but for your Github Profile!.',
+    description: 'Spotify Wrapped but for your Github Profile!',
   },
   {
     id: 'phosphor',
@@ -231,14 +231,14 @@ export const projects = [
     name: 'SpyWare',
     image: '/assets/images/projects/malware.webp',
     href: 'https://github.com/crypticsaiyan/wocProject',
-    description: 'A spyware which uses python sockets for connections',
+    description: 'A spyware which uses python sockets for connections.',
   },
   {
     id: 'minesafe',
     name: 'MineSafe',
     image: '/assets/images/projects/minesafe.webp',
     href: 'https://github.com/crypticsaiyan/minesafe',
-    description: 'AI-Powered Mining Safety Intelligence Platform',
+    description: 'AI-Powered Mining Safety Intelligence Platform.',
   },
   {
     id: 'relay',
@@ -273,7 +273,7 @@ export const projects = [
     name: 'Exo-huhh',
     image: '/assets/images/projects/nasa.webp',
     href: 'https://github.com/armoredvortex/nasa-space-apps/',
-    description: 'Classify and analyze exoplanets using AI',
+    description: 'Classify and analyze exoplanets using AI!',
   },
   {
     id: 'sentinelx',
@@ -287,7 +287,7 @@ export const projects = [
     name: 'Browser Startpage',
     image: '/assets/images/projects/startpage.webp',
     href: 'https://github.com/crypticsaiyan/startpage',
-    description: 'Minimal browser startpage',
+    description: 'Minimal browser startpage!',
   },
   {
     id: 'xkcd',
