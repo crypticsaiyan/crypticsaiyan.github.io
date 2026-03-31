@@ -208,7 +208,7 @@ function CreditsPanel({ isMobileLayout }) {
           <div className="bold">theme:</div>
           <a href="https://catppuccin.com/" target="_blank" rel="noreferrer">
             <img
-              src="/assets/images/catppuccin-logo.png"
+              src="/assets/images/catppuccin-logo.webp"
               width="40"
               height="40"
               alt="catppuccin-logo"

@@ -8,7 +8,12 @@ import LoadingScreen from './components/LoadingScreen.jsx'
 import MobileNav from './components/MobileNav.jsx'
 import NoiseOverlay from './components/NoiseOverlay.jsx'
 import Terminal from './components/Terminal.jsx'
-import { navItems, preloadAssets, projects } from './data/siteContent.js'
+import {
+  criticalPreloadAssets,
+  deferredPreloadAssets,
+  navItems,
+  projects,
+} from './data/siteContent.js'
 import { useMediaQuery } from './hooks/useMediaQuery.js'
 
 const directionKeyMap = {
@@ -20,6 +25,22 @@ const directionKeyMap = {
   h: 'leftkey',
   ArrowRight: 'rightkey',
   l: 'rightkey',
+}
+
+function preloadImage(src) {
+  return new Promise((resolve) => {
+    const image = new Image()
+    image.onload = image.onerror = resolve
+    image.src = src
+  })
+}
+
+function preloadFont(descriptor) {
+  if (typeof document === 'undefined' || !document.fonts?.load) {
+    return Promise.resolve()
+  }
+
+  return document.fonts.load(descriptor).catch(() => {})
 }
 
 function App() {
@@ -42,16 +63,16 @@ function App() {
   useEffect(() => {
     let cancelled = false
 
-    Promise.all(
-      preloadAssets.map(
-        (src) =>
-          new Promise((resolve) => {
-            const image = new Image()
-            image.onload = image.onerror = resolve
-            image.src = src
-          }),
-      ),
-    ).then(() => {
+    Promise.all([
+      Promise.all(criticalPreloadAssets.map(preloadImage)),
+      Promise.allSettled([
+        preloadFont('400 1em "JetBrains Mono"'),
+        preloadFont('600 1em "Pixelify Sans"'),
+        preloadFont('900 1em "Font Awesome 6 Free"'),
+        preloadFont('400 1em "Font Awesome 6 Brands"'),
+        document.fonts?.ready ?? Promise.resolve(),
+      ]),
+    ]).then(() => {
       if (!cancelled) {
         setStage('overlay')
       }
@@ -61,6 +82,16 @@ function App() {
       cancelled = true
     }
   }, [])
+
+  useEffect(() => {
+    if (stage === 'loading') {
+      return
+    }
+
+    deferredPreloadAssets.forEach((src) => {
+      void preloadImage(src)
+    })
+  }, [stage])
 
   const flashInstructionKey = (direction) => {
     if (highlightTimeoutRef.current) {
@@ -124,6 +155,45 @@ function App() {
     window.addEventListener('keydown', handleOverlayEnter)
     return () => {
       window.removeEventListener('keydown', handleOverlayEnter)
+    }
+  }, [stage])
+
+  useEffect(() => {
+    if (stage !== 'entered') {
+      return undefined
+    }
+
+    function handleFullscreenChange() {
+      const fullscreenElement =
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.msFullscreenElement
+
+      if (!fullscreenElement) {
+        setStage('overlay')
+      }
+    }
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange)
+    document.addEventListener(
+      'webkitfullscreenchange',
+      handleFullscreenChange,
+    )
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange)
+
+    return () => {
+      document.removeEventListener(
+        'fullscreenchange',
+        handleFullscreenChange,
+      )
+      document.removeEventListener(
+        'webkitfullscreenchange',
+        handleFullscreenChange,
+      )
+      document.removeEventListener(
+        'MSFullscreenChange',
+        handleFullscreenChange,
+      )
     }
   }, [stage])
 

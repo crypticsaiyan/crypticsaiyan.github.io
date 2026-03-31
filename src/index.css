@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --noise-url: url("/assets/images/rainbow.png");
+  --noise-url: url("/assets/images/rainbow.webp");
   --font-mono: "JetBrains Mono", monospace;
   --font-display: "Pixelify Sans", sans-serif;
   --blue: #89b4fa;
@@ -57,7 +57,7 @@ body::before {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url("/assets/images/design.png");
+  background-image: url("/assets/images/design.webp");
   z-index: -1;
 }
 
