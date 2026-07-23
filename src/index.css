@@ -22,9 +22,9 @@
   --sapphire: #74c7ec;
   --sky: #89dceb;
   --flamingo: #f2cdcd;
-  --normal: 1.25rem;
-  --small: 1.05rem;
-  --large: 1.45rem;
+  --normal: clamp(0.85rem, 0.78rem + 0.35vw, 1.05rem);
+  --small: clamp(0.72rem, 0.66rem + 0.25vw, 0.9rem);
+  --large: clamp(0.95rem, 0.88rem + 0.3vw, 1.2rem);
   --section-heading: calc(var(--normal) * 1.05);
   --section-icon: calc(var(--normal) * 1.55);
   --nav-icon: calc(var(--normal) * 1.15);
@@ -572,6 +572,7 @@ nav ul li i {
 }
 
 .prompt {
+  flex-shrink: 0;
   font-size: var(--normal);
   line-height: 28px;
   align-content: center;
@@ -592,7 +593,8 @@ nav ul li i {
   font-weight: 500;
   font-size: var(--normal);
   padding: 0 30px;
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   justify-content: flex-start;
   overflow-y: auto;
   max-height: 100%;
@@ -714,8 +716,9 @@ nav ul li i {
 
 .content .project .group .projectimage {
   border: 2px solid var(--mauve);
-  width: 350px;
-  height: 210px;
+  width: clamp(220px, 30vw, 480px);
+  aspect-ratio: 5 / 3;
+  height: auto;
 }
 
 .projectimage img {
@@ -728,7 +731,7 @@ nav ul li i {
 
 .leftarr,
 .rightarr {
-  margin: 40px;
+  margin: clamp(12px, 3vw, 40px);
   font-size: var(--arrow-size);
   line-height: 1;
 }
@@ -766,8 +769,8 @@ nav ul li i {
 .content .contact {
   @apply flex flex-wrap items-center justify-between;
   width: 100%;
-  height: 30vh;
   column-gap: 50px;
+  row-gap: 20px;
   margin-top: 30px;
 }
 
@@ -870,11 +873,6 @@ footer div > span {
     height: 75%;
   }
 
-  :root {
-    --normal: 1.1rem;
-    --small: 0.95rem;
-  }
-
   .prompt .text {
     line-height: 26px;
   }
@@ -903,16 +901,7 @@ footer div > span {
   .content {
     padding: 0;
     max-height: 100%;
-    overflow-y: hidden;
-  }
-
-  .content.credits-content {
     overflow-y: auto;
-  }
-
-  :root {
-    --normal: 0.95rem;
-    --small: 0.78rem;
   }
 
   .content .contact > a i {
@@ -929,28 +918,9 @@ footer div > span {
     height: 74vh;
   }
 
-  :root {
-    --normal: 18px;
-    --small: 14px;
-  }
-
   .terminal {
     height: 65%;
     gap: 10px;
-  }
-
-  .terminal .prompt div {
-    margin-top: -10px;
-  }
-
-  .content .project .group .projectimage {
-    width: 300px;
-    height: 180px;
-  }
-
-  .projectimage img {
-    width: 100%;
-    height: 100%;
   }
 
   .rightarr,
@@ -992,19 +962,9 @@ footer div > span {
     padding-left: 30px;
     margin-top: 10px;
   }
-
-  .content .contact {
-    height: 35vh;
-  }
 }
 
 @media (max-width: 900px) {
-  :root {
-    --normal: 1.05rem;
-    --small: 0.9rem;
-    --large: 1.2rem;
-  }
-
   header .instructions,
   main .left {
     display: none;
@@ -1088,10 +1048,6 @@ footer div > span {
     font-weight: 800;
     padding: 0 10px;
     line-height: 1;
-  }
-
-  .projectimage img {
-    width: 308px;
   }
 
   .content .project .group .leftarr,
@@ -1185,31 +1141,13 @@ footer div > span {
 }
 
 @media (max-width: 425px) {
-  :root {
-    --normal: 1rem;
-    --small: 0.82rem;
-  }
-
   .content .skills {
     gap: 20px;
-  }
-
-  .content .project .group .projectimage {
-    width: 240px;
-    height: 175px;
   }
 
   .project {
     padding: 40px 0;
     gap: 40px;
-  }
-
-  .projectimage img {
-    width: 270px;
-  }
-
-  .content {
-    margin-top: -5px;
   }
 
   .content .habbits {
@@ -1236,11 +1174,6 @@ footer div > span {
     font-size: var(--normal);
   }
 
-  :root {
-    --normal: 0.95rem;
-    --small: 0.78rem;
-  }
-
   .content {
     margin-top: 10px;
   }
@@ -1263,17 +1196,11 @@ footer div > span {
     height: 5vh;
   }
 
-  .content {
-    margin-top: 4px;
-  }
-
   .content .habbits {
-    margin-top: -10px;
     gap: 20px;
   }
 
   .content .skills {
-    margin-top: -15px;
     gap: 5px;
   }
 
@@ -1313,11 +1240,6 @@ footer div > span {
 
   footer {
     height: 4vh;
-  }
-
-  :root {
-    --normal: 1rem;
-    --small: 0.78rem;
   }
 
   .content {
