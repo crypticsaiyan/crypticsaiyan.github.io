@@ -165,6 +165,13 @@ export const contacts = [
     icon: "fab fa-linkedin",
     handle: "Rahul Joshi",
   },
+  {
+    name: "X",
+    tone: "white",
+    href: "https://x.com/_crypticsaiyan",
+    icon: "fab fa-square-x-twitter",
+    handle: "@_crypticsaiyan",
+  },
 ];
 
 export const projects = [

@@ -22,9 +22,9 @@
   --sapphire: #74c7ec;
   --sky: #89dceb;
   --flamingo: #f2cdcd;
-  --normal: 1.25rem;
-  --small: 1.05rem;
-  --large: 1.45rem;
+  --normal: clamp(0.85rem, 0.78rem + 0.35vw, 1.05rem);
+  --small: clamp(0.72rem, 0.66rem + 0.25vw, 0.9rem);
+  --large: clamp(0.95rem, 0.88rem + 0.3vw, 1.2rem);
   --section-heading: calc(var(--normal) * 1.05);
   --section-icon: calc(var(--normal) * 1.55);
   --nav-icon: calc(var(--normal) * 1.15);
@@ -572,6 +572,7 @@ nav ul li i {
 }
 
 .prompt {
+  flex-shrink: 0;
   font-size: var(--normal);
   line-height: 28px;
   align-content: center;
@@ -592,7 +593,8 @@ nav ul li i {
   font-weight: 500;
   font-size: var(--normal);
   padding: 0 30px;
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   justify-content: flex-start;
   overflow-y: auto;
   max-height: 100%;
@@ -623,13 +625,7 @@ nav ul li i {
 }
 
 .content.credits-content {
-  justify-content: flex-start;
   overflow-x: hidden;
-}
-
-.content.credits-content > * {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .aboutmelink {
@@ -691,6 +687,7 @@ nav ul li i {
 .tools div i,
 .content .contact > a i {
   font-size: var(--section-icon);
+  flex-shrink: 0;
 }
 
 .lang div span,
@@ -714,8 +711,9 @@ nav ul li i {
 
 .content .project .group .projectimage {
   border: 2px solid var(--mauve);
-  width: 350px;
-  height: 210px;
+  width: clamp(220px, 30vw, 480px);
+  aspect-ratio: 5 / 3;
+  height: auto;
 }
 
 .projectimage img {
@@ -728,7 +726,7 @@ nav ul li i {
 
 .leftarr,
 .rightarr {
-  margin: 40px;
+  margin: clamp(12px, 3vw, 40px);
   font-size: var(--arrow-size);
   line-height: 1;
 }
@@ -764,24 +762,34 @@ nav ul li i {
 }
 
 .content .contact {
-  @apply flex flex-wrap items-center justify-between;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
   width: 100%;
-  height: 30vh;
-  column-gap: 50px;
-  margin-top: 30px;
+  column-gap: clamp(30px, 4vw, 60px);
+  row-gap: clamp(10px, 2vw, 24px);
 }
 
 .content .contact > a {
   @apply flex items-center justify-start;
   text-align: center;
-  width: 40%;
-  height: 75px;
+  width: 100%;
+  max-width: 320px;
+  min-height: 56px;
   gap: 15px;
   text-decoration: none;
 }
 
+.content .contact > a:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: calc(50% - clamp(30px, 4vw, 60px) / 2);
+}
+
 .content .contact > a .details {
   @apply flex flex-col items-start;
+  min-width: 0;
 }
 
 .content .contact > a .details .userid {
@@ -798,7 +806,6 @@ nav ul li i {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  margin-top: 0 !important;
 }
 
 .content .credits .credits-art {
@@ -870,11 +877,6 @@ footer div > span {
     height: 75%;
   }
 
-  :root {
-    --normal: 1.1rem;
-    --small: 0.95rem;
-  }
-
   .prompt .text {
     line-height: 26px;
   }
@@ -882,15 +884,6 @@ footer div > span {
   header .hey img {
     width: 45vw;
     bottom: 30px;
-  }
-
-  .content .contact > a {
-    width: 45%;
-  }
-
-  .terminal .contact {
-    text-overflow: ellipsis;
-    margin-top: 0;
   }
 
   .content .contact > a .details .userid {
@@ -903,16 +896,7 @@ footer div > span {
   .content {
     padding: 0;
     max-height: 100%;
-    overflow-y: hidden;
-  }
-
-  .content.credits-content {
     overflow-y: auto;
-  }
-
-  :root {
-    --normal: 0.95rem;
-    --small: 0.78rem;
   }
 
   .content .contact > a i {
@@ -929,28 +913,9 @@ footer div > span {
     height: 74vh;
   }
 
-  :root {
-    --normal: 18px;
-    --small: 14px;
-  }
-
   .terminal {
     height: 65%;
     gap: 10px;
-  }
-
-  .terminal .prompt div {
-    margin-top: -10px;
-  }
-
-  .content .project .group .projectimage {
-    width: 300px;
-    height: 180px;
-  }
-
-  .projectimage img {
-    width: 100%;
-    height: 100%;
   }
 
   .rightarr,
@@ -959,7 +924,7 @@ footer div > span {
   }
 
   .content .contact {
-    justify-content: space-around;
+    justify-content: center;
   }
 
   .content .credits .used {
@@ -992,19 +957,9 @@ footer div > span {
     padding-left: 30px;
     margin-top: 10px;
   }
-
-  .content .contact {
-    height: 35vh;
-  }
 }
 
 @media (max-width: 900px) {
-  :root {
-    --normal: 1.05rem;
-    --small: 0.9rem;
-    --large: 1.2rem;
-  }
-
   header .instructions,
   main .left {
     display: none;
@@ -1090,13 +1045,13 @@ footer div > span {
     line-height: 1;
   }
 
-  .projectimage img {
-    width: 308px;
-  }
-
   .content .project .group .leftarr,
   .content .project .group .rightarr {
     display: none;
+  }
+
+  .content .project .group .projectimage {
+    width: clamp(200px, 68vw, 340px);
   }
 
   .mobileprojectarrows {
@@ -1106,12 +1061,16 @@ footer div > span {
     height: 2vh;
   }
 
-  .content .credits {
-    margin-top: 0;
+  .content .contact {
+    grid-template-columns: 1fr;
   }
 
   .content .contact > a {
     width: 100%;
+  }
+
+  .content .contact > a:last-child {
+    max-width: 320px;
   }
 
   .content .credits > div:first-child {
@@ -1185,31 +1144,13 @@ footer div > span {
 }
 
 @media (max-width: 425px) {
-  :root {
-    --normal: 1rem;
-    --small: 0.82rem;
-  }
-
   .content .skills {
     gap: 20px;
-  }
-
-  .content .project .group .projectimage {
-    width: 240px;
-    height: 175px;
   }
 
   .project {
     padding: 40px 0;
     gap: 40px;
-  }
-
-  .projectimage img {
-    width: 270px;
-  }
-
-  .content {
-    margin-top: -5px;
   }
 
   .content .habbits {
@@ -1236,17 +1177,12 @@ footer div > span {
     font-size: var(--normal);
   }
 
-  :root {
-    --normal: 0.95rem;
-    --small: 0.78rem;
-  }
-
   .content {
     margin-top: 10px;
   }
 
   .content .contact > a {
-    height: 60px;
+    min-height: 60px;
   }
 }
 
@@ -1263,17 +1199,11 @@ footer div > span {
     height: 5vh;
   }
 
-  .content {
-    margin-top: 4px;
-  }
-
   .content .habbits {
-    margin-top: -10px;
     gap: 20px;
   }
 
   .content .skills {
-    margin-top: -15px;
     gap: 5px;
   }
 
@@ -1286,11 +1216,7 @@ footer div > span {
   }
 
   .content .contact > a {
-    height: 60px;
-  }
-
-  .content .credits {
-    margin-top: 0;
+    min-height: 50px;
   }
 }
 
@@ -1313,11 +1239,6 @@ footer div > span {
 
   footer {
     height: 4vh;
-  }
-
-  :root {
-    --normal: 1rem;
-    --small: 0.78rem;
   }
 
   .content {
@@ -1346,7 +1267,7 @@ footer div > span {
   }
 
   .content .contact > a {
-    height: 55px;
+    min-height: 46px;
   }
 
   .project {
