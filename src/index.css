@@ -22,9 +22,9 @@
   --sapphire: #74c7ec;
   --sky: #89dceb;
   --flamingo: #f2cdcd;
-  --normal: clamp(0.85rem, 0.78rem + 0.35vw, 1.05rem);
-  --small: clamp(0.72rem, 0.66rem + 0.25vw, 0.9rem);
-  --large: clamp(0.95rem, 0.88rem + 0.3vw, 1.2rem);
+  --normal: clamp(0.875rem, 0.78rem + 0.45vmin, 1.3rem);
+  --small: clamp(0.75rem, 0.66rem + 0.4vmin, 1.1rem);
+  --large: clamp(0.95rem, 0.84rem + 0.5vmin, 1.45rem);
   --section-heading: calc(var(--normal) * 1.05);
   --section-icon: calc(var(--normal) * 1.55);
   --nav-icon: calc(var(--normal) * 1.15);
@@ -596,6 +596,7 @@ nav ul li i {
   flex: 1 1 auto;
   min-height: 0;
   justify-content: flex-start;
+  overflow-x: hidden;
   overflow-y: auto;
   max-height: 100%;
   scrollbar-width: thin;
@@ -802,10 +803,9 @@ nav ul li i {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: clamp(12px, 3vh, 28px);
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
 }
 
 .content .credits .credits-art {
@@ -850,6 +850,7 @@ nav ul li i {
 
 footer {
   @apply flex items-center justify-between;
+  position: relative;
   height: 3vh;
   width: 100vw;
   background-color: var(--darkest);
@@ -862,6 +863,21 @@ footer div > span {
   display: inline-block;
   min-width: 150px;
   text-align: right;
+}
+
+.footer-blog {
+  @apply flex items-center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 8px;
+  color: var(--lavender);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-blog:hover {
+  color: var(--mauve);
 }
 
 @media screen and (orientation: landscape) and (max-width: 915px) {
@@ -971,6 +987,16 @@ footer div > span {
     justify-content: center;
   }
 
+  /* mobile: drop the file status, surface the blog link on the right */
+  footer > div {
+    display: none;
+  }
+
+  .footer-blog {
+    position: static;
+    transform: none;
+  }
+
   header {
     height: 18vh;
   }
@@ -1001,6 +1027,16 @@ footer div > span {
 
   .habbits .habbititem div:first-child {
     display: none;
+  }
+
+  /* permission column hidden on mobile; give the two remaining
+     columns room so longer status words don't overflow */
+  .content .habbits .habbititem div {
+    width: 50%;
+  }
+
+  .content .habbits .habbititem div:last-child {
+    text-align: right;
   }
 
   .lang,
@@ -1223,6 +1259,7 @@ footer div > span {
 @media (max-height: 725px) and (orientation: portrait) {
   .terminal {
     height: 95%;
+    gap: 14px;
   }
 
   header {
@@ -1247,6 +1284,7 @@ footer div > span {
 
   .content .habbits {
     margin-top: 8px;
+    gap: 10px;
   }
 
   .content .skills {
@@ -1288,5 +1326,66 @@ footer div > span {
 @media (orientation: portrait) {
   .cursor {
     display: none;
+  }
+
+  /* raise the type floor on portrait/mobile so text stays comfortably
+     readable; landscape desktops keep the smaller fit-to-height sizes */
+  :root {
+    --normal: clamp(1rem, 0.9rem + 0.6vmin, 1.3rem);
+    --small: clamp(0.85rem, 0.76rem + 0.5vmin, 1.1rem);
+    --large: clamp(1.1rem, 0.98rem + 0.7vmin, 1.45rem);
+  }
+}
+
+/* very short phones: ease the type floor back down so text-heavy
+   sections still fit without a scrollbar */
+@media (max-height: 680px) and (orientation: portrait) {
+  :root {
+    --normal: clamp(0.9rem, 0.82rem + 0.5vmin, 1.3rem);
+    --small: clamp(0.78rem, 0.7rem + 0.45vmin, 1.1rem);
+    --large: clamp(1rem, 0.9rem + 0.6vmin, 1.45rem);
+  }
+
+  .content .credits {
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .content .credits .credits-art {
+    font-size: clamp(0.46rem, 1.8vw, 0.6rem);
+    line-height: 1;
+  }
+
+  .content .credits .used {
+    gap: 8px;
+    font-size: var(--small);
+  }
+
+  .content .contact {
+    row-gap: 6px;
+  }
+
+  .content .contact > a {
+    min-height: 40px;
+  }
+}
+
+/* short landscape desktops: trim vertical gaps so tall sections don't
+   overflow the terminal (portrait/mobile handled by the blocks above) */
+@media (max-height: 800px) and (orientation: landscape) and (min-width: 901px) {
+  .terminal {
+    gap: clamp(10px, 2.5vh, 30px);
+  }
+
+  .content .habbits {
+    gap: clamp(4px, 1.2vh, 15px);
+  }
+
+  .project {
+    gap: clamp(10px, 2.4vh, 40px);
+  }
+
+  .content .project .group .projectimage {
+    width: clamp(220px, 34vh, 480px);
   }
 }

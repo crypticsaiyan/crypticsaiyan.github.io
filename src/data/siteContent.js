@@ -1,3 +1,6 @@
+// TODO: replace with your real blog URL
+export const blogUrl = "https://blog.crypticsaiyan.com";
+
 export const navItems = [
   {
     id: "about_me",
