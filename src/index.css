@@ -687,6 +687,7 @@ nav ul li i {
 .tools div i,
 .content .contact > a i {
   font-size: var(--section-icon);
+  flex-shrink: 0;
 }
 
 .lang div span,
@@ -761,23 +762,34 @@ nav ul li i {
 }
 
 .content .contact {
-  @apply flex flex-wrap items-center justify-center;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
+  justify-items: center;
   width: 100%;
-  column-gap: 50px;
-  row-gap: 20px;
+  column-gap: clamp(30px, 4vw, 60px);
+  row-gap: clamp(10px, 2vw, 24px);
 }
 
 .content .contact > a {
   @apply flex items-center justify-start;
   text-align: center;
-  width: clamp(220px, 30%, 300px);
-  height: 75px;
+  width: 100%;
+  max-width: 320px;
+  min-height: 56px;
   gap: 15px;
   text-decoration: none;
 }
 
+.content .contact > a:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: calc(50% - clamp(30px, 4vw, 60px) / 2);
+}
+
 .content .contact > a .details {
   @apply flex flex-col items-start;
+  min-width: 0;
 }
 
 .content .contact > a .details .userid {
@@ -1049,8 +1061,16 @@ footer div > span {
     height: 2vh;
   }
 
+  .content .contact {
+    grid-template-columns: 1fr;
+  }
+
   .content .contact > a {
     width: 100%;
+  }
+
+  .content .contact > a:last-child {
+    max-width: 320px;
   }
 
   .content .credits > div:first-child {
@@ -1162,7 +1182,7 @@ footer div > span {
   }
 
   .content .contact > a {
-    height: 60px;
+    min-height: 60px;
   }
 }
 
@@ -1196,7 +1216,7 @@ footer div > span {
   }
 
   .content .contact > a {
-    height: 60px;
+    min-height: 50px;
   }
 }
 
@@ -1247,7 +1267,7 @@ footer div > span {
   }
 
   .content .contact > a {
-    height: 55px;
+    min-height: 46px;
   }
 
   .project {
