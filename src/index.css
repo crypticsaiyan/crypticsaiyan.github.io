@@ -625,13 +625,7 @@ nav ul li i {
 }
 
 .content.credits-content {
-  justify-content: flex-start;
   overflow-x: hidden;
-}
-
-.content.credits-content > * {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .aboutmelink {
@@ -767,17 +761,16 @@ nav ul li i {
 }
 
 .content .contact {
-  @apply flex flex-wrap items-center justify-between;
+  @apply flex flex-wrap items-center justify-center;
   width: 100%;
   column-gap: 50px;
   row-gap: 20px;
-  margin-top: 30px;
 }
 
 .content .contact > a {
   @apply flex items-center justify-start;
   text-align: center;
-  width: 40%;
+  width: clamp(220px, 30%, 300px);
   height: 75px;
   gap: 15px;
   text-decoration: none;
@@ -801,7 +794,6 @@ nav ul li i {
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  margin-top: 0 !important;
 }
 
 .content .credits .credits-art {
@@ -882,15 +874,6 @@ footer div > span {
     bottom: 30px;
   }
 
-  .content .contact > a {
-    width: 45%;
-  }
-
-  .terminal .contact {
-    text-overflow: ellipsis;
-    margin-top: 0;
-  }
-
   .content .contact > a .details .userid {
     overflow-wrap: anywhere;
     text-align: left;
@@ -929,7 +912,7 @@ footer div > span {
   }
 
   .content .contact {
-    justify-content: space-around;
+    justify-content: center;
   }
 
   .content .credits .used {
@@ -1055,15 +1038,15 @@ footer div > span {
     display: none;
   }
 
+  .content .project .group .projectimage {
+    width: clamp(200px, 68vw, 340px);
+  }
+
   .mobileprojectarrows {
     @apply flex items-center justify-center;
     gap: 20px;
     width: 100%;
     height: 2vh;
-  }
-
-  .content .credits {
-    margin-top: 0;
   }
 
   .content .contact > a {
@@ -1214,10 +1197,6 @@ footer div > span {
 
   .content .contact > a {
     height: 60px;
-  }
-
-  .content .credits {
-    margin-top: 0;
   }
 }
 
