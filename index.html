@@ -3,7 +3,96 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Website</title>
+
+    <!-- Primary SEO -->
+    <title>Rahul Joshi — Developer &amp; CS Undergrad @ IIT Dhanbad</title>
+    <meta
+      name="description"
+      content="Portfolio of Rahul Joshi (crypticsaiyan), a CS undergrad at IIT Dhanbad passionate about web development, low-level systems, and computer science."
+    />
+    <meta name="author" content="Rahul Joshi" />
+    <meta
+      name="keywords"
+      content="Rahul Joshi, crypticsaiyan, portfolio, web developer, IIT Dhanbad, computer science, software engineer, low-level systems"
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#11111b" />
+    <link rel="canonical" href="https://crypticsaiyan.me/" />
+
+    <!-- Open Graph (Facebook, LinkedIn, Discord, etc.) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Rahul Joshi — Portfolio" />
+    <meta property="og:url" content="https://crypticsaiyan.me/" />
+    <meta
+      property="og:title"
+      content="Rahul Joshi — Developer &amp; CS Undergrad @ IIT Dhanbad"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Rahul Joshi (crypticsaiyan): web development, low-level systems, and everything computer science."
+    />
+    <meta
+      property="og:image"
+      content="https://crypticsaiyan.me/assets/images/og-image.jpg"
+    />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Rahul Joshi's terminal-style portfolio homepage"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@_crypticsaiyan" />
+    <meta
+      name="twitter:title"
+      content="Rahul Joshi — Developer &amp; CS Undergrad @ IIT Dhanbad"
+    />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Rahul Joshi (crypticsaiyan): web development, low-level systems, and everything computer science."
+    />
+    <meta
+      name="twitter:image"
+      content="https://crypticsaiyan.me/assets/images/og-image.jpg"
+    />
+
+    <!-- Structured data: helps Google & AI assistants understand the page -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Rahul Joshi",
+        "alternateName": "crypticsaiyan",
+        "url": "https://crypticsaiyan.me/",
+        "image": "https://crypticsaiyan.me/assets/images/og-image.jpg",
+        "jobTitle": "Software Developer",
+        "description": "CS undergrad at IIT Dhanbad passionate about web development, low-level systems, and computer science.",
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Indian Institute of Technology (ISM) Dhanbad"
+        },
+        "knowsAbout": [
+          "Web Development",
+          "Low-level Systems",
+          "Computer Science",
+          "C",
+          "C++",
+          "Python",
+          "JavaScript",
+          "TypeScript",
+          "React"
+        ],
+        "sameAs": [
+          "https://github.com/crypticsaiyan",
+          "https://x.com/_crypticsaiyan",
+          "https://www.linkedin.com/in/rahul-joshi-059a882a7/"
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link
@@ -44,6 +133,26 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <main>
+        <h1>Rahul Joshi</h1>
+        <p>
+          CS undergrad at IIT Dhanbad, passionate about web development,
+          low-level systems, and everything computer science.
+        </p>
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/crypticsaiyan">GitHub</a></li>
+          <li><a href="https://x.com/_crypticsaiyan">X / Twitter</a></li>
+          <li>
+            <a href="https://www.linkedin.com/in/rahul-joshi-059a882a7/"
+              >LinkedIn</a
+            >
+          </li>
+          <li><a href="mailto:crypticsaiyan@proton.me">Email</a></li>
+        </ul>
+      </main>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
