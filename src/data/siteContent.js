@@ -179,13 +179,6 @@ export const contacts = [
 
 export const projects = [
   {
-    id: "infoundry",
-    name: "InFoundry",
-    image: "/assets/images/projects/infoundry.webp",
-    href: "https://github.com/crypticsaiyan/infoundry",
-    description: "Generate Infrasturucture as Code for your repo",
-  },
-  {
     id: "polydub",
     name: "PolyDub",
     image: "/assets/images/projects/polydub.webp",
@@ -193,11 +186,25 @@ export const projects = [
     description: "Real-time video dubbing & communication platform.",
   },
   {
+    id: "ephemeris",
+    name: "Ephemeris",
+    image: "/assets/images/projects/ephemeris.webp",
+    href: "https://github.com/crypticsaiyan/ephemeris",
+    description: "Ask NASA's video archive, get cited answer reels!",
+  },
+  {
     id: "trace",
     name: "Trace",
     image: "/assets/images/projects/trace.webp",
     href: "https://github.com/crypticsaiyan/trace",
     description: "Record sessions, get narrated PR walkthroughs!",
+  },
+  {
+    id: "infoundry",
+    name: "InFoundry",
+    image: "/assets/images/projects/infoundry.webp",
+    href: "https://github.com/crypticsaiyan/infoundry",
+    description: "Generate Infrasturucture as Code for your repo",
   },
   {
     id: "globseo",
@@ -212,6 +219,13 @@ export const projects = [
     image: "/assets/images/projects/canvasx.webp",
     href: "https://github.com/crypticsaiyan/CanvasX",
     description: "Drag and drop website builder!",
+  },
+  {
+    id: "avatar-engine",
+    name: "avatar-engine",
+    image: "/assets/images/projects/avatar-engine.webp",
+    href: "https://github.com/crypticsaiyan/avatar-engine",
+    description: "Real-time conversational AI avatar engine!",
   },
   {
     id: "visusort",
