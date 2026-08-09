@@ -51,7 +51,7 @@ export const aboutContent = {
   schoolName: "IIT Dhanbad",
   schoolUrl: "https://www.iitism.ac.in/",
   resumeUrl:
-    "https://drive.google.com/drive/folders/1tlwvukcALbV46JwYUYKEDPK1bbPmnIN2?usp=drive_link",
+    "https://drive.google.com/drive/folders/1XGzyIOdxRuRgIXRi4WNHeG2DT5BRRmyK?usp=sharing",
   intro: "Hi! I'm a CS undergrad @",
   introTail:
     ". I'm passionate about web development, low-level systems, and pretty much everything about computer science :D",
