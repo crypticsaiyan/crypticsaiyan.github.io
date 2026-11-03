@@ -3,6 +3,7 @@ import {
   contacts,
   creditsArt,
   hobbies,
+  navItems,
   projects,
   skillGroups,
 } from '../data/siteContent.js'
@@ -94,8 +95,8 @@ function HobbiesPanel() {
   )
 }
 
+// All projects stay in the DOM so crawlers see them; only the active one shows
 function ProjectsPanel({ projectIndex, onNextProject, onPreviousProject }) {
-  const project = projects[projectIndex]
   const swipeHandlers = useSwipe({
     onSwipeLeft: onNextProject,
     onSwipeRight: onPreviousProject,
@@ -115,9 +116,21 @@ function ProjectsPanel({ projectIndex, onNextProject, onPreviousProject }) {
         >
           &lt;
         </button>
-        <div className="projectimage" {...swipeHandlers}>
-          <img src={project.image} alt={project.name} width={500} />
-        </div>
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            className="projectimage"
+            hidden={index !== projectIndex}
+            {...swipeHandlers}
+          >
+            <img
+              src={project.image}
+              alt={`${project.name} screenshot`}
+              width={500}
+              loading={index === projectIndex ? 'eager' : 'lazy'}
+            />
+          </div>
+        ))}
         <button
           type="button"
           className="bold rightarr"
@@ -148,12 +161,20 @@ function ProjectsPanel({ projectIndex, onNextProject, onPreviousProject }) {
           &gt;
         </button>
       </div>
-      <div className="projectname">
-        <a href={project.href} target="_blank" rel="noreferrer">
-          {project.name}
-        </a>
-        <div>{project.description}</div>
-      </div>
+      {projects.map((project, index) => (
+        <div
+          key={project.id}
+          className="projectname"
+          hidden={index !== projectIndex}
+        >
+          <h3>
+            <a href={project.href} target="_blank" rel="noreferrer">
+              {project.name}
+            </a>
+          </h3>
+          <div>{project.description}</div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -211,7 +232,7 @@ function CreditsPanel({ isMobileLayout }) {
               src="/assets/images/catppuccin-logo.webp"
               width="40"
               height="40"
-              alt="catppuccin-logo"
+              alt="Catppuccin logo"
             />
             &nbsp;<div className="mauve">catppuccin mocha</div>
           </a>
@@ -230,34 +251,21 @@ function Terminal({
   onPreviousProject,
   projectIndex,
 }) {
-  function renderContent() {
-    switch (activeItem.id) {
-      case 'about_me':
-        return (
-          <AboutPanel
-            isShortHeight={isShortHeight}
-            isTinyWidth={isTinyWidth}
-          />
-        )
-      case 'skills':
-        return <SkillsPanel />
-      case 'hobbies/':
-        return <HobbiesPanel />
-      case 'projects/':
-        return (
-          <ProjectsPanel
-            projectIndex={projectIndex}
-            onNextProject={onNextProject}
-            onPreviousProject={onPreviousProject}
-          />
-        )
-      case 'get_in_touch/':
-        return <ContactsPanel />
-      case 'credits':
-        return <CreditsPanel isMobileLayout={isMobileLayout} />
-      default:
-        return null
-    }
+  const panels = {
+    about_me: (
+      <AboutPanel isShortHeight={isShortHeight} isTinyWidth={isTinyWidth} />
+    ),
+    'hobbies/': <HobbiesPanel />,
+    skills: <SkillsPanel />,
+    'projects/': (
+      <ProjectsPanel
+        projectIndex={projectIndex}
+        onNextProject={onNextProject}
+        onPreviousProject={onPreviousProject}
+      />
+    ),
+    'get_in_touch/': <ContactsPanel />,
+    credits: <CreditsPanel isMobileLayout={isMobileLayout} />,
   }
 
   return (
@@ -271,7 +279,12 @@ function Terminal({
       <div
         className={`content${activeItem.id === 'credits' ? ' credits-content' : ''}`}
       >
-        {renderContent()}
+        {navItems.map((item) => (
+          <section key={item.id} hidden={item.id !== activeItem.id}>
+            <h2 className="sr-only">{item.heading}</h2>
+            {panels[item.id]}
+          </section>
+        ))}
       </div>
     </div>
   )

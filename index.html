@@ -94,11 +94,8 @@
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
-    />
     <link
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap"
       rel="stylesheet"
@@ -130,29 +127,22 @@
       async
       src="//gc.zgo.at/count.js"
     ></script>
+    <noscript>
+      <!-- content is prerendered; without JS just drop the loader and custom cursor -->
+      <style>
+        #loading-screen,
+        .cursor {
+          display: none !important;
+        }
+
+        * {
+          cursor: auto !important;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <div id="root"></div>
-    <noscript>
-      <main>
-        <h1>Rahul Joshi</h1>
-        <p>
-          CS undergrad at IIT Dhanbad, passionate about web development,
-          low-level systems, and everything computer science.
-        </p>
-        <h2>Links</h2>
-        <ul>
-          <li><a href="https://github.com/crypticsaiyan">GitHub</a></li>
-          <li><a href="https://x.com/_crypticsaiyan">X / Twitter</a></li>
-          <li>
-            <a href="https://www.linkedin.com/in/rahul-joshi-059a882a7/"
-              >LinkedIn</a
-            >
-          </li>
-          <li><a href="mailto:crypticsaiyan@proton.me">Email</a></li>
-        </ul>
-      </main>
-    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

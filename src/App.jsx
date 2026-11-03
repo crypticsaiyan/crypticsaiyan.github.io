@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 import Cursor from './components/Cursor.jsx'
 import DesktopNav from './components/DesktopNav.jsx'
 import FooterStatus from './components/FooterStatus.jsx'
-import FullscreenOverlay from './components/FullscreenOverlay.jsx'
 import InstructionLegend from './components/InstructionLegend.jsx'
 import LoadingScreen from './components/LoadingScreen.jsx'
 import MobileNav from './components/MobileNav.jsx'
@@ -14,6 +13,7 @@ import {
   navItems,
   projects,
 } from './data/siteContent.js'
+import { metaFor, pathFor, stateFromPath } from './data/routes.js'
 import { useMediaQuery } from './hooks/useMediaQuery.js'
 
 const directionKeyMap = {
@@ -43,10 +43,14 @@ function preloadFont(descriptor) {
   return document.fonts.load(descriptor).catch(() => {})
 }
 
-function App() {
+// initialPath is passed when prerendering, where there is no window
+function App({ initialPath }) {
+  const [initialState] = useState(() =>
+    stateFromPath(initialPath ?? window.location.pathname),
+  )
   const [stage, setStage] = useState('loading')
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [projectIndex, setProjectIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(initialState.activeIndex)
+  const [projectIndex, setProjectIndex] = useState(initialState.projectIndex)
   const [frameIndex, setFrameIndex] = useState(0)
   const [highlightedDirection, setHighlightedDirection] = useState('')
 
@@ -74,7 +78,7 @@ function App() {
       ]),
     ]).then(() => {
       if (!cancelled) {
-        setStage('overlay')
+        setStage('entered')
       }
     })
 
@@ -82,6 +86,17 @@ function App() {
       cancelled = true
     }
   }, [])
+
+  // replaceState keeps arrow-key browsing from flooding the back button
+  useEffect(() => {
+    const path = pathFor(activeIndex, projectIndex)
+
+    if (window.location.pathname !== path) {
+      window.history.replaceState(null, '', path)
+    }
+
+    document.title = metaFor(activeIndex, projectIndex).title
+  }, [activeIndex, projectIndex])
 
   useEffect(() => {
     if (stage === 'loading') {
@@ -105,23 +120,6 @@ function App() {
     }, 100)
   }
 
-  const enterSite = () => {
-    const rootElement = document.documentElement
-    const requestFullscreen =
-      rootElement.requestFullscreen?.bind(rootElement) ||
-      rootElement.webkitRequestFullscreen?.bind(rootElement) ||
-      rootElement.msRequestFullscreen?.bind(rootElement)
-
-    try {
-      const fullscreenPromise = requestFullscreen?.()
-      fullscreenPromise?.catch?.(() => {})
-    } catch {
-      // Entering fullscreen is best-effort; the site should still open.
-    }
-
-    setStage('entered')
-  }
-
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setFrameIndex((currentFrame) => (currentFrame === 0 ? 1 : 0))
@@ -139,63 +137,6 @@ function App() {
       }
     }
   }, [])
-
-  useEffect(() => {
-    if (stage !== 'overlay') {
-      return undefined
-    }
-
-    function handleOverlayEnter(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault()
-        enterSite()
-      }
-    }
-
-    window.addEventListener('keydown', handleOverlayEnter)
-    return () => {
-      window.removeEventListener('keydown', handleOverlayEnter)
-    }
-  }, [stage])
-
-  useEffect(() => {
-    if (stage !== 'entered') {
-      return undefined
-    }
-
-    function handleFullscreenChange() {
-      const fullscreenElement =
-        document.fullscreenElement ||
-        document.webkitFullscreenElement ||
-        document.msFullscreenElement
-
-      if (!fullscreenElement) {
-        setStage('overlay')
-      }
-    }
-
-    document.addEventListener('fullscreenchange', handleFullscreenChange)
-    document.addEventListener(
-      'webkitfullscreenchange',
-      handleFullscreenChange,
-    )
-    document.addEventListener('MSFullscreenChange', handleFullscreenChange)
-
-    return () => {
-      document.removeEventListener(
-        'fullscreenchange',
-        handleFullscreenChange,
-      )
-      document.removeEventListener(
-        'webkitfullscreenchange',
-        handleFullscreenChange,
-      )
-      document.removeEventListener(
-        'MSFullscreenChange',
-        handleFullscreenChange,
-      )
-    }
-  }, [stage])
 
   useEffect(() => {
     if (stage !== 'entered') {
@@ -272,55 +213,53 @@ function App() {
     <>
       <Cursor />
       {stage === 'loading' && <LoadingScreen />}
-      {stage === 'overlay' && <FullscreenOverlay onEnter={enterSite} />}
-      {stage === 'entered' && (
-        <div id="main-content">
-          <NoiseOverlay />
-          <div className="landscape-warning">
-            <p>Please switch to portrait mode</p>
-            <p>for the best experience</p>
-          </div>
-
-          <header>
-            <div className="hey">
-              <img
-                src={heroFrames[frameIndex]}
-                width={850}
-                alt="Animated intro banner"
-              />
-            </div>
-            <InstructionLegend highlightedDirection={highlightedDirection} />
-          </header>
-
-          <main>
-            <DesktopNav
-              activeId={activeItem.id}
-              items={navItems}
-              onSelect={selectNav}
-            />
-            <div className="right">
-              <Terminal
-                activeItem={activeItem}
-                isMobileLayout={isMobileLayout}
-                isShortHeight={isShortHeight}
-                isTinyWidth={isTinyWidth}
-                onNextProject={goToNextProject}
-                onPreviousProject={goToPreviousProject}
-                projectIndex={projectIndex}
-              />
-            </div>
-          </main>
-
-          <MobileNav
-            activeIndex={activeIndex}
-            items={navItems}
-            onNext={goToNextNavItem}
-            onPrevious={goToPreviousNavItem}
-          />
-
-          <FooterStatus item={activeItem} />
+      <div id="main-content">
+        <NoiseOverlay />
+        <div className="landscape-warning">
+          <p>Please switch to portrait mode</p>
+          <p>for the best experience</p>
         </div>
-      )}
+
+        <header>
+          <h1 className="sr-only">Rahul Joshi (crypticsaiyan)</h1>
+          <div className="hey">
+            <img
+              src={heroFrames[frameIndex]}
+              width={850}
+              alt="Hey, I'm Rahul"
+            />
+          </div>
+          <InstructionLegend highlightedDirection={highlightedDirection} />
+        </header>
+
+        <main>
+          <DesktopNav
+            activeId={activeItem.id}
+            items={navItems}
+            onSelect={selectNav}
+          />
+          <div className="right">
+            <Terminal
+              activeItem={activeItem}
+              isMobileLayout={isMobileLayout}
+              isShortHeight={isShortHeight}
+              isTinyWidth={isTinyWidth}
+              onNextProject={goToNextProject}
+              onPreviousProject={goToPreviousProject}
+              projectIndex={projectIndex}
+            />
+          </div>
+        </main>
+
+        <MobileNav
+          activeIndex={activeIndex}
+          items={navItems}
+          onNext={goToNextNavItem}
+          onPrevious={goToPreviousNavItem}
+        />
+
+        <FooterStatus item={activeItem} />
+      </div>
     </>
   )
 }

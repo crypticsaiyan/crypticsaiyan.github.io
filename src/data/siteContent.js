@@ -4,6 +4,8 @@ export const blogUrl = "https://blog.crypticsaiyan.me";
 export const navItems = [
   {
     id: "about_me",
+    path: "/",
+    heading: "About me",
     label: "about_me",
     kind: "file",
     icon: "fas fa-info-circle",
@@ -11,6 +13,8 @@ export const navItems = [
   },
   {
     id: "hobbies/",
+    path: "/hobbies/",
+    heading: "Hobbies",
     label: "hobbies/",
     kind: "directory",
     icon: "fas fa-music",
@@ -18,6 +22,8 @@ export const navItems = [
   },
   {
     id: "skills",
+    path: "/skills/",
+    heading: "Skills",
     label: "skills",
     kind: "file",
     icon: "fas fa-code",
@@ -25,6 +31,8 @@ export const navItems = [
   },
   {
     id: "projects/",
+    path: "/projects/",
+    heading: "Projects",
     label: "projects/",
     kind: "directory",
     icon: "fas fa-folder-open",
@@ -32,6 +40,8 @@ export const navItems = [
   },
   {
     id: "get_in_touch/",
+    path: "/contact/",
+    heading: "Get in touch",
     label: "get_in_touch/",
     kind: "directory",
     icon: "fas fa-address-book",
@@ -40,6 +50,8 @@ export const navItems = [
   },
   {
     id: "credits",
+    path: "/credits/",
+    heading: "Credits",
     label: "credits",
     kind: "file",
     icon: "fas fa-smile",

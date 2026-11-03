@@ -341,23 +341,6 @@ b {
   }
 }
 
-#fullscreen-overlay {
-  @apply fixed inset-0 z-[99] flex items-center justify-center;
-  flex-direction: column;
-}
-
-#fullscreen-btn {
-  font-size: 2rem;
-  z-index: 99;
-  text-transform: uppercase;
-  font-family: var(--font-display);
-  padding: 1em 1.5em;
-  border: 5px solid var(--lavender);
-  font-weight: 500;
-  color: var(--dark-violet);
-  background-color: var(--violet);
-}
-
 .noisecont {
   position: fixed;
   inset: 0;
@@ -413,8 +396,20 @@ b {
   }
 }
 
+/* 100dvh = visible area (excludes mobile browser bars), so the layout fits
+   without fullscreen. header/nav/footer keep their size, main takes the rest */
 #main-content {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+#main-content > header,
+#main-content > .mobilenav,
+#main-content > footer {
+  flex: 0 0 auto;
 }
 
 .landscape-warning {
@@ -435,18 +430,23 @@ b {
 
 header {
   @apply relative flex;
-  height: 27vh;
+  height: 27dvh;
 }
 
 header .hey {
   @apply relative flex items-end justify-start;
   width: 70vw;
+  min-height: 0;
 }
 
 header .hey img {
-  position: absolute;
   margin-left: 100px;
   width: 850px;
+  height: auto;
+  max-width: calc(100% - 100px);
+  max-height: 100%;
+  object-fit: contain;
+  object-position: left bottom;
 }
 
 header .instructions {
@@ -496,7 +496,8 @@ header .instructions:hover {
 
 main {
   @apply flex;
-  height: 70vh;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .left {
@@ -803,7 +804,7 @@ nav ul li i {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(12px, 3vh, 28px);
+  gap: clamp(12px, 3dvh, 28px);
   width: 100%;
   max-width: 100%;
 }
@@ -851,8 +852,9 @@ nav ul li i {
 footer {
   @apply flex items-center justify-between;
   position: relative;
-  height: 3vh;
-  width: 100vw;
+  height: 3dvh;
+  min-height: 1.6em;
+  width: 100%;
   background-color: var(--darkest);
   font-size: var(--normal);
   font-weight: 600;
@@ -897,9 +899,12 @@ footer div > span {
     line-height: 26px;
   }
 
+  header .hey {
+    padding-bottom: 30px;
+  }
+
   header .hey img {
     width: 45vw;
-    bottom: 30px;
   }
 
   .content .contact > a .details .userid {
@@ -922,11 +927,7 @@ footer div > span {
 
 @media (max-height: 850px) and (orientation: portrait) {
   header {
-    height: 23vh;
-  }
-
-  main {
-    height: 74vh;
+    height: 23dvh;
   }
 
   .terminal {
@@ -998,17 +999,18 @@ footer div > span {
   }
 
   header {
-    height: 18vh;
+    height: 18dvh;
+  }
+
+  header .hey {
+    padding-bottom: 0;
   }
 
   header .hey img {
     margin-left: 0;
     width: min(375px, 70vw);
-    bottom: 0;
-  }
-
-  main {
-    height: 72vh;
+    max-width: 100%;
+    object-position: center bottom;
   }
 
   .terminal {
@@ -1063,8 +1065,8 @@ footer div > span {
 
   div.mobilenav {
     @apply flex items-start justify-center;
-    width: 100vw;
-    height: 7vh;
+    width: 100%;
+    height: 7dvh;
   }
 
   .mobilenav .nav {
@@ -1094,7 +1096,7 @@ footer div > span {
     @apply flex items-center justify-center;
     gap: 20px;
     width: 100%;
-    height: 2vh;
+    height: 2dvh;
   }
 
   .content .contact {
@@ -1139,7 +1141,7 @@ footer div > span {
   div.carousel-viewport {
     @apply flex justify-center overflow-hidden;
     width: 70vw;
-    height: 4vh;
+    height: 4dvh;
   }
 
   .nav ul li i {
@@ -1224,15 +1226,11 @@ footer div > span {
 
 @media (max-height: 790px) and (orientation: portrait) {
   header {
-    height: 20vh;
+    height: 20dvh;
   }
 
-  main {
-    height: 70vh;
-  }
-
-  .mobilenav {
-    height: 5vh;
+  div.mobilenav {
+    height: 5dvh;
   }
 
   .content .habbits {
@@ -1263,19 +1261,15 @@ footer div > span {
   }
 
   header {
-    height: 21vh;
-  }
-
-  main {
-    height: 69vh;
+    height: 21dvh;
   }
 
   div.mobilenav {
-    height: 6vh;
+    height: 6dvh;
   }
 
   footer {
-    height: 4vh;
+    height: 4dvh;
   }
 
   .content {
@@ -1374,18 +1368,19 @@ footer div > span {
    overflow the terminal (portrait/mobile handled by the blocks above) */
 @media (max-height: 800px) and (orientation: landscape) and (min-width: 901px) {
   .terminal {
-    gap: clamp(10px, 2.5vh, 30px);
+    height: 88%;
+    gap: clamp(10px, 2.5dvh, 30px);
   }
 
   .content .habbits {
-    gap: clamp(4px, 1.2vh, 15px);
+    gap: clamp(4px, 1.2dvh, 15px);
   }
 
   .project {
-    gap: clamp(10px, 2.4vh, 40px);
+    gap: clamp(10px, 2.4dvh, 40px);
   }
 
   .content .project .group .projectimage {
-    width: clamp(220px, 34vh, 480px);
+    width: clamp(220px, 34dvh, 480px);
   }
 }
