@@ -6,10 +6,35 @@ import { fileURLToPath } from 'node:url'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const distDir = join(root, 'dist')
-const { metaFor, prerenderPaths, render, siteUrl, stateFromPath } =
-  await import(join(root, 'dist-ssr', 'entry-server.js'))
+const {
+  llmsFullTxt,
+  llmsTxt,
+  metaFor,
+  prerenderPaths,
+  render,
+  siteUrl,
+  stateFromPath,
+  structuredData,
+} = await import(join(root, 'dist-ssr', 'entry-server.js'))
 
-const template = await readFile(join(distDir, 'index.html'), 'utf8')
+const buildDate = new Date().toISOString().slice(0, 10)
+// "<" escaped so a description can never close the <script> tag early
+const jsonLd = JSON.stringify(structuredData(buildDate), null, 2).replaceAll(
+  '<',
+  '\\u003c',
+)
+const template = (await readFile(join(distDir, 'index.html'), 'utf8')).replace(
+  '<!--structured-data-->',
+  `<script type="application/ld+json">\n${jsonLd}\n    </script>`,
+)
+
+if (template.includes('<!--structured-data-->') || !template.includes('ld+json')) {
+  throw new Error('prerender: structured data placeholder not replaced')
+}
+
+await writeFile(join(distDir, 'llms.txt'), llmsTxt())
+await writeFile(join(distDir, 'llms-full.txt'), llmsFullTxt())
+console.log('wrote llms.txt, llms-full.txt')
 
 function escapeHtml(value) {
   return value

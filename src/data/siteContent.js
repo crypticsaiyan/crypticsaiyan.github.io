@@ -79,9 +79,9 @@ export const skillGroups = [
     items: [
       { name: "C", color: "sapphire", icon: "fas fa-c" },
       { name: "C++", color: "blue", icon: "fas fa-code" },
-      { name: "Py", color: "green", icon: "fab fa-python" },
-      { name: "JS", color: "yellow", icon: "fab fa-js-square" },
-      { name: "TS", color: "teal", icon: "fab fa-js" },
+      { name: "Py", fullName: "Python", color: "green", icon: "fab fa-python" },
+      { name: "JS", fullName: "JavaScript", color: "yellow", icon: "fab fa-js-square" },
+      { name: "TS", fullName: "TypeScript", color: "teal", icon: "fab fa-js" },
     ],
   },
   {
@@ -92,9 +92,9 @@ export const skillGroups = [
       { name: "Next.js", color: "white", icon: "fas fa-n" },
       { name: "Node.js", color: "green", icon: "fab fa-node-js" },
       { name: "Express", color: "mauve", icon: "fas fa-server" },
-      { name: "Tailwind", color: "teal", icon: "fab fa-css3" },
+      { name: "Tailwind", fullName: "Tailwind CSS", color: "teal", icon: "fab fa-css3" },
       { name: "Redis", color: "red", icon: "fas fa-database" },
-      { name: "WS", color: "orange", icon: "fas fa-plug" },
+      { name: "WS", fullName: "WebSockets", color: "orange", icon: "fas fa-plug" },
     ],
   },
   {
@@ -104,9 +104,9 @@ export const skillGroups = [
       { name: "Linux", color: "rosewater", icon: "fab fa-linux" },
       { name: "Git", color: "red", icon: "fab fa-git-alt" },
       { name: "GitHub", color: "mauve", icon: "fab fa-github" },
-      { name: "MCP", color: "lavender", icon: "fas fa-robot" },
+      { name: "MCP", fullName: "Model Context Protocol (MCP)", color: "lavender", icon: "fas fa-robot" },
       { name: "Postman", color: "orange", icon: "fas fa-paper-plane" },
-      { name: "NeoVim", color: "green", icon: "fas fa-terminal" },
+      { name: "NeoVim", fullName: "Neovim", color: "green", icon: "fas fa-terminal" },
       {
         name: "Tmux",
         color: "pink",
@@ -118,8 +118,8 @@ export const skillGroups = [
     title: "CS Fundamentals",
     layoutClass: "tools",
     items: [
-      { name: "DSA", color: "yellow", icon: "fas fa-diagram-project" },
-      { name: "OOP", color: "mauve", icon: "fas fa-cubes" },
+      { name: "DSA", fullName: "Data Structures & Algorithms", color: "yellow", icon: "fas fa-diagram-project" },
+      { name: "OOP", fullName: "Object-Oriented Programming", color: "mauve", icon: "fas fa-cubes" },
     ],
   },
 ];
@@ -216,7 +216,7 @@ export const projects = [
     name: "InFoundry",
     image: "/assets/images/projects/infoundry.webp",
     href: "https://github.com/crypticsaiyan/infoundry",
-    description: "Generate Infrasturucture as Code for your repo",
+    description: "Generate Infrastructure as Code for your repo",
   },
   {
     id: "globseo",
@@ -258,7 +258,7 @@ export const projects = [
     name: "GitHub Wrapped",
     image: "/assets/images/projects/githubwrapped.webp",
     href: "https://github.com/crypticsaiyan/githubwrapped",
-    description: "Spotify Wrapped but for your Github Profile!.",
+    description: "Spotify Wrapped but for your GitHub profile!",
   },
   {
     id: "phosphor",
