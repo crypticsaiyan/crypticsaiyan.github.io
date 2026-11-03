@@ -12,6 +12,7 @@ const {
   metaFor,
   prerenderPaths,
   render,
+  renderNotFound,
   siteUrl,
   stateFromPath,
   structuredData,
@@ -82,3 +83,15 @@ for (const path of prerenderPaths) {
   await writeFile(outFile, html)
   console.log(`prerendered ${path}`)
 }
+
+// GitHub Pages serves /404.html (with a 404 status) for any unknown path
+const notFound = template
+  .replace(
+    '<div id="root"></div>',
+    `<div id="root" data-page="404">${renderNotFound()}</div>`,
+  )
+  .replace(/<title>[^<]*<\/title>/, '<title>404: Page not found | Rahul Joshi</title>')
+  .replace(/\s*<link rel="canonical"[^>]*>/, '')
+  .replace('</title>', '</title>\n    <meta name="robots" content="noindex" />')
+await writeFile(join(distDir, '404.html'), notFound)
+console.log('prerendered 404.html')

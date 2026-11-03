@@ -1227,3 +1227,64 @@ footer div > span {
     width: clamp(220px, 34dvh, 480px);
   }
 }
+
+/* 404 page (src/NotFound.jsx): no side nav, so the terminal takes the row */
+.not-found main {
+  justify-content: center;
+}
+
+.not-found .right {
+  width: 100%;
+}
+
+.not-found .terminal {
+  width: min(900px, 90%);
+}
+
+.not-found-title {
+  font-size: var(--large);
+  font-weight: 700;
+}
+
+.not-found-path {
+  color: var(--white);
+  overflow-wrap: anywhere;
+  margin: 4px 0 24px;
+}
+
+.not-found-hint {
+  margin: 12px 0;
+}
+
+.not-found-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 8px 24px;
+  list-style: none;
+  padding: 0;
+}
+
+.not-found-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .not-found-links {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .not-found-links a {
+    padding: 4px 6px;
+  }
+
+  /* no keyboard on phones */
+  .not-found-enter {
+    display: none;
+  }
+}
+

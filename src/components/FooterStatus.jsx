@@ -1,13 +1,13 @@
 import { blogUrl } from '../data/siteContent.js'
 import PermissionBits from './PermissionBits.jsx'
 
-function FooterStatus({ item }) {
+function FooterStatus({ item, label = '--VISITING--', labelClass = 'yellow' }) {
   const permissions =
     item.kind === 'directory' ? 'drwxr--r--' : '-rwxr--r--'
 
   return (
     <footer>
-      <span className="yellow">--VISITING--</span>
+      <span className={labelClass}>{label}</span>
       <a
         className="footer-blog"
         href={blogUrl}

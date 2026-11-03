@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Cursor from './components/Cursor.jsx'
 import DesktopNav from './components/DesktopNav.jsx'
 import FooterStatus from './components/FooterStatus.jsx'
+import HeroBanner from './components/HeroBanner.jsx'
 import InstructionLegend from './components/InstructionLegend.jsx'
 import MobileNav from './components/MobileNav.jsx'
 import NoiseOverlay from './components/NoiseOverlay.jsx'
@@ -40,7 +41,6 @@ function App({ initialPath }) {
   )
   const [activeIndex, setActiveIndex] = useState(initialState.activeIndex)
   const [projectIndex, setProjectIndex] = useState(initialState.projectIndex)
-  const [frameIndex, setFrameIndex] = useState(0)
   const [highlightedDirection, setHighlightedDirection] = useState('')
 
   const highlightTimeoutRef = useRef(null)
@@ -90,16 +90,6 @@ function App({ initialPath }) {
       setHighlightedDirection('')
     }, 100)
   }
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setFrameIndex((currentFrame) => (currentFrame === 0 ? 1 : 0))
-    }, 250)
-
-    return () => {
-      window.clearInterval(intervalId)
-    }
-  }, [isMobileLayout])
 
   useEffect(() => {
     return () => {
@@ -188,25 +178,7 @@ function App({ initialPath }) {
 
         <header>
           <h1 className="sr-only">Rahul Joshi (crypticsaiyan)</h1>
-          <div className="hey">
-            {/* <picture> lets the prerendered HTML pick the right banner for
-                the screen before any JS runs */}
-            <picture>
-              <source
-                media="(max-width: 900px)"
-                srcSet={`/assets/images/mobframe${frameIndex + 1}.png`}
-                width={356}
-                height={164}
-              />
-              <img
-                src={`/assets/images/frame${frameIndex + 1}.png`}
-                width={895}
-                height={127}
-                alt="Hey, I'm Rahul"
-                fetchPriority="high"
-              />
-            </picture>
-          </div>
+          <HeroBanner />
           <InstructionLegend highlightedDirection={highlightedDirection} />
         </header>
 
