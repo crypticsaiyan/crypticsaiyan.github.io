@@ -8,6 +8,8 @@
     "dev": "vite",
     "build": "vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node scripts/prerender.mjs",
     "lint": "eslint .",
+    "icons": "python3 scripts/fa-subset.py",
+    "thumbs": "python3 scripts/project-thumbs.py",
     "preview": "vite preview"
   },
   "dependencies": {

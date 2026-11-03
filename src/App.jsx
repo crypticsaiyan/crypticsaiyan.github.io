@@ -3,12 +3,10 @@ import Cursor from './components/Cursor.jsx'
 import DesktopNav from './components/DesktopNav.jsx'
 import FooterStatus from './components/FooterStatus.jsx'
 import InstructionLegend from './components/InstructionLegend.jsx'
-import LoadingScreen from './components/LoadingScreen.jsx'
 import MobileNav from './components/MobileNav.jsx'
 import NoiseOverlay from './components/NoiseOverlay.jsx'
 import Terminal from './components/Terminal.jsx'
 import {
-  criticalPreloadAssets,
   deferredPreloadAssets,
   navItems,
   projects,
@@ -35,20 +33,11 @@ function preloadImage(src) {
   })
 }
 
-function preloadFont(descriptor) {
-  if (typeof document === 'undefined' || !document.fonts?.load) {
-    return Promise.resolve()
-  }
-
-  return document.fonts.load(descriptor).catch(() => {})
-}
-
 // initialPath is passed when prerendering, where there is no window
 function App({ initialPath }) {
   const [initialState] = useState(() =>
     stateFromPath(initialPath ?? window.location.pathname),
   )
-  const [stage, setStage] = useState('loading')
   const [activeIndex, setActiveIndex] = useState(initialState.activeIndex)
   const [projectIndex, setProjectIndex] = useState(initialState.projectIndex)
   const [frameIndex, setFrameIndex] = useState(0)
@@ -60,33 +49,6 @@ function App({ initialPath }) {
   const isShortHeight = useMediaQuery('(max-height: 675px)')
 
   const activeItem = navItems[activeIndex]
-  const heroFrames = isMobileLayout
-    ? ['/assets/images/mobframe1.png', '/assets/images/mobframe2.png']
-    : ['/assets/images/frame1.png', '/assets/images/frame2.png']
-
-  useEffect(() => {
-    let cancelled = false
-
-    Promise.all([
-      Promise.all(criticalPreloadAssets.map(preloadImage)),
-      Promise.allSettled([
-        preloadFont('400 1em "JetBrains Mono"'),
-        preloadFont('600 1em "Pixelify Sans"'),
-        preloadFont('900 1em "Font Awesome 6 Free"'),
-        preloadFont('400 1em "Font Awesome 6 Brands"'),
-        document.fonts?.ready ?? Promise.resolve(),
-      ]),
-    ]).then(() => {
-      if (!cancelled) {
-        setStage('entered')
-      }
-    })
-
-    return () => {
-      cancelled = true
-    }
-  }, [])
-
   // replaceState keeps arrow-key browsing from flooding the back button
   useEffect(() => {
     const path = pathFor(activeIndex, projectIndex)
@@ -98,15 +60,24 @@ function App({ initialPath }) {
     document.title = metaFor(activeIndex, projectIndex).title
   }, [activeIndex, projectIndex])
 
+  // warm the cache for later frames/projects without competing with first paint
   useEffect(() => {
-    if (stage === 'loading') {
-      return
+    function preloadDeferredAssets() {
+      deferredPreloadAssets.forEach((src) => {
+        void preloadImage(src)
+      })
     }
 
-    deferredPreloadAssets.forEach((src) => {
-      void preloadImage(src)
-    })
-  }, [stage])
+    if (document.readyState === 'complete') {
+      preloadDeferredAssets()
+      return undefined
+    }
+
+    window.addEventListener('load', preloadDeferredAssets, { once: true })
+    return () => {
+      window.removeEventListener('load', preloadDeferredAssets)
+    }
+  }, [])
 
   const flashInstructionKey = (direction) => {
     if (highlightTimeoutRef.current) {
@@ -139,10 +110,6 @@ function App({ initialPath }) {
   }, [])
 
   useEffect(() => {
-    if (stage !== 'entered') {
-      return undefined
-    }
-
     function handleKeyDown(event) {
       const direction = directionKeyMap[event.key]
 
@@ -181,7 +148,7 @@ function App({ initialPath }) {
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeItem.id, stage])
+  }, [activeItem.id])
 
   function selectNav(id) {
     const nextIndex = navItems.findIndex((item) => item.id === id)
@@ -212,7 +179,6 @@ function App({ initialPath }) {
   return (
     <>
       <Cursor />
-      {stage === 'loading' && <LoadingScreen />}
       <div id="main-content">
         <NoiseOverlay />
         <div className="landscape-warning">
@@ -223,11 +189,23 @@ function App({ initialPath }) {
         <header>
           <h1 className="sr-only">Rahul Joshi (crypticsaiyan)</h1>
           <div className="hey">
-            <img
-              src={heroFrames[frameIndex]}
-              width={850}
-              alt="Hey, I'm Rahul"
-            />
+            {/* <picture> lets the prerendered HTML pick the right banner for
+                the screen before any JS runs */}
+            <picture>
+              <source
+                media="(max-width: 900px)"
+                srcSet={`/assets/images/mobframe${frameIndex + 1}.png`}
+                width={356}
+                height={164}
+              />
+              <img
+                src={`/assets/images/frame${frameIndex + 1}.png`}
+                width={895}
+                height={127}
+                alt="Hey, I'm Rahul"
+                fetchPriority="high"
+              />
+            </picture>
           </div>
           <InstructionLegend highlightedDirection={highlightedDirection} />
         </header>

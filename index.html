@@ -95,14 +95,27 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <!-- font CSS loads without blocking first paint; text swaps in -->
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <!-- icon font subset (scripts/fa-subset.py), a few KB each -->
+    <link
+      rel="preload"
+      href="/assets/fonts/fa-solid-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      rel="stylesheet"
+      rel="preload"
+      href="/assets/fonts/fa-brands-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
     <link
       rel="apple-touch-icon"
@@ -128,9 +141,9 @@
       src="//gc.zgo.at/count.js"
     ></script>
     <noscript>
-      <!-- content is prerendered; without JS just drop the loader and custom cursor -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" />
+      <!-- content is prerendered; without JS just drop the custom cursor -->
       <style>
-        #loading-screen,
         .cursor {
           display: none !important;
         }

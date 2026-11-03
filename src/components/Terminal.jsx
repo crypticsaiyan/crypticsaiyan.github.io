@@ -125,8 +125,11 @@ function ProjectsPanel({ projectIndex, onNextProject, onPreviousProject }) {
           >
             <img
               src={project.image}
+              srcSet={`${project.image.replace(/\.webp$/, '-600.webp')} 600w, ${project.image} 1200w`}
+              sizes="(max-width: 900px) 340px, 480px"
               alt={`${project.name} screenshot`}
               width={500}
+              height={300}
               loading={index === projectIndex ? 'eager' : 'lazy'}
             />
           </div>

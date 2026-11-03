@@ -365,16 +365,9 @@ export const creditsArt = {
   },
 };
 
-export const criticalPreloadAssets = [
-  "/assets/images/design.webp",
-  "/assets/images/frame1.png",
-  "/assets/images/frame2.png",
-  "/assets/images/mobframe1.png",
-  "/assets/images/mobframe2.png",
-  "/assets/images/rainbow.webp",
-];
-
 export const deferredPreloadAssets = [
+  "/assets/images/frame2.png",
+  "/assets/images/mobframe2.png",
   "/assets/images/catppuccin-logo.webp",
-  ...projects.map((project) => project.image),
+  ...projects.map((project) => project.image.replace(/\.webp$/, "-600.webp")),
 ];
